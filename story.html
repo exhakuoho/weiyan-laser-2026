@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" data-style="tech">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>故事世界｜8 大科學原理常態班</title>
+<meta name="description" content="《小怪獸科學群島》與《GRID-8 城市科學案件簿》：8 堂課 = 8 章故事 = 8 個科學原理。">
+<meta name="theme-color" content="#030D1C">
+<link rel="icon" href="img/weiyan-symbol-96.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Huninn&family=Orbitron:wght@500;700;900&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var s = new URLSearchParams(location.search).get('style');
+  try { s = s || localStorage.getItem('weiyan-style'); } catch (e) {}
+  if (s !== 'cute' && s !== 'tech') s = 'tech';
+  try { localStorage.setItem('weiyan-style', s); } catch (e) {} // 讓網址指定的風格延續到世界觀頁
+  document.documentElement.dataset.style = s;
+})();
+</script>
+<style>
+/* ================== 色票（與報名頁相同） ================== */
+html[data-style="tech"]{
+  --bg:#030D1C;--panel:rgba(9,32,62,.72);--solid:#0A2342;--ink:#2FE6FF;
+  --text:#E8F4FF;--muted:#8FB0CF;--line:rgba(47,230,255,.22);
+  --a1:#2FE6FF;--a2:#1E7BFF;--a3:#FFD23F;--a4:#FF5D6C;--a5:#1FD1A5;
+  --btn-bg:linear-gradient(90deg,#2FE6FF,#1E9BFF);--btn-text:#03111F;
+  --grad:linear-gradient(90deg,#2FE6FF,#1E7BFF);--hl:#FFD23F;
+  --r:10px;--r-lg:14px;
+  --zh:'Noto Sans TC',system-ui,sans-serif;--en:'Orbitron','Noto Sans TC',sans-serif;
+  color-scheme:dark;
+}
+html[data-style="cute"]{
+  --bg:#D9EFFE;--panel:#FFFFFF;--solid:#FFFFFF;--ink:#173A7A;
+  --text:#1B2F5E;--muted:#4E6390;--line:rgba(23,58,122,.16);
+  --a1:#2F7DE0;--a2:#F27BA6;--a3:#FFC531;--a4:#F68F09;--a5:#5BAA2E;
+  --btn-bg:linear-gradient(180deg,#FFA92E,#F68F09);--btn-text:#fff;
+  --grad:linear-gradient(90deg,#2F7DE0,#6A3FC8 55%,#F27BA6);--hl:#F68F09;
+  --r:22px;--r-lg:30px;
+  --zh:'Huninn','Noto Sans TC',system-ui,sans-serif;--en:'Fredoka','Huninn',sans-serif;
+  color-scheme:light;
+}
+html[data-style="tech"] .only-c,html[data-style="cute"] .only-t{display:none !important}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--text);font-family:var(--zh);font-size:18px;line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+.en{font-family:var(--en);letter-spacing:.06em}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+section{position:relative;padding:clamp(80px,11vw,140px) 0;z-index:2}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hl{color:var(--hl)}
+:focus-visible{outline:3px solid var(--a3);outline-offset:3px}
+.ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bg-tint{position:fixed;inset:0;z-index:0;pointer-events:none}
+html[data-style="tech"] .bg-tint{background:radial-gradient(900px 600px at 85% -10%,rgba(30,123,255,.28),transparent 60%),radial-gradient(700px 500px at -10% 40%,rgba(47,230,255,.12),transparent 60%)}
+html[data-style="tech"] .bg-tint::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(47,230,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(47,230,255,.06) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(#000,transparent 85%)}
+html[data-style="cute"] .bg-tint{background:linear-gradient(180deg,#7CC2F6 0,#AEDBFB 40%,#D9EFFE 75%,#EAF6FF)}
+
+/* ================== 開場 ================== */
+#intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--bg);cursor:pointer;transition:opacity .8s,visibility .8s;text-align:center;padding:24px}
+#intro.out{opacity:0;visibility:hidden}
+html[data-style="cute"] #intro{background:linear-gradient(180deg,#7CC2F6,#D9EFFE)}
+.in-box{max-width:640px}
+.in-box img{width:120px;margin:0 auto 18px;animation:bob 1.2s ease-in-out infinite}
+.in-alert{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:15px;letter-spacing:.14em;padding:8px 18px;border-radius:99px;margin-bottom:18px}
+html[data-style="tech"] .in-alert{color:var(--a4);border:1px solid var(--a4);animation:blink 1s steps(2) infinite}
+html[data-style="cute"] .in-alert{background:#fff;color:#E8501E;box-shadow:0 5px 0 rgba(23,58,122,.15)}
+.in-type{font-size:clamp(24px,4vw,40px);font-weight:900;line-height:1.5;min-height:3em}
+html[data-style="tech"] .in-type{font-family:Consolas,var(--zh);color:var(--a1)}
+.in-skip{margin-top:22px;font-size:13px;color:var(--muted);letter-spacing:.2em}
+@keyframes bob{50%{translate:0 -10px}}
+@keyframes blink{50%{opacity:.3}}
+
+/* ================== 導覽 ================== */
+#progress{position:fixed;left:0;top:0;height:4px;width:0;z-index:60;background:var(--grad)}
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+.nav.scrolled{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+html[data-style="tech"] .nav.scrolled{background:rgba(3,13,28,.8);box-shadow:0 1px 0 var(--line)}
+html[data-style="cute"] .nav.scrolled{background:rgba(234,246,255,.9);box-shadow:0 4px 18px rgba(23,58,122,.15)}
+.nav-in{display:flex;align-items:center;gap:18px;height:76px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:17px;line-height:1.15;flex:none}
+.brand img{width:42px;height:42px;border-radius:12px}
+.brand small{display:block;font-family:var(--en);font-size:10px;letter-spacing:.24em;color:var(--muted);font-weight:500}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{padding:8px 12px;border-radius:99px;font-weight:700;font-size:16px;color:var(--muted);transition:color .2s,background .2s}
+.links a:hover{color:var(--text);background:color-mix(in srgb,var(--a1) 14%,transparent)}
+.switch{position:relative;display:flex;flex:none;padding:4px;border-radius:99px;cursor:pointer;border:0;font-weight:700;font-size:15px;background:color-mix(in srgb,var(--text) 10%,transparent)}
+html[data-style="cute"] .switch{border:3px solid var(--ink);background:#fff}
+html[data-style="tech"] .switch{border:1px solid var(--line)}
+.switch span{position:relative;z-index:1;display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:99px;white-space:nowrap}
+.switch::before{content:"";position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:99px;transition:transform .45s cubic-bezier(.5,1.6,.4,1)}
+html[data-style="cute"] .switch::before{background:var(--a3)}
+html[data-style="tech"] .switch::before{background:var(--grad);transform:translateX(100%)}
+html[data-style="tech"] .switch .s-t{color:#03111F}
+.switch .ico{width:18px;height:18px}
+.menu-btn{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.menu-btn i{display:block;width:24px;height:3px;border-radius:2px;background:var(--text)}
+
+/* ================== 按鈕／卡片 ================== */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;font-weight:900;font-size:18px;border:0;cursor:pointer;background:var(--btn-bg);color:var(--btn-text);transition:transform .25s,box-shadow .25s,filter .25s;white-space:nowrap}
+.btn .ico{width:22px;height:22px}
+html[data-style="tech"] .btn{border-radius:6px;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);box-shadow:0 0 30px rgba(47,230,255,.35)}
+html[data-style="tech"] .btn:hover{filter:brightness(1.12)}
+html[data-style="cute"] .btn{border-radius:99px;border:3px solid var(--ink);box-shadow:0 6px 0 var(--ink)}
+html[data-style="cute"] .btn:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--ink)}
+.btn.ghost{background:transparent;color:var(--text)}
+html[data-style="tech"] .btn.ghost{box-shadow:inset 0 0 0 1px var(--a1);color:var(--a1)}
+html[data-style="cute"] .btn.ghost{background:#fff;color:var(--ink)}
+.card{position:relative;background:var(--panel);border-radius:var(--r-lg)}
+html[data-style="tech"] .card{border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+html[data-style="tech"] .card::before{content:"";position:absolute;inset:-1px;pointer-events:none;border-radius:inherit;background:linear-gradient(var(--a1),var(--a1)) left top/18px 2px,linear-gradient(var(--a1),var(--a1)) left top/2px 18px,linear-gradient(var(--a1),var(--a1)) right bottom/18px 2px,linear-gradient(var(--a1),var(--a1)) right bottom/2px 18px;background-repeat:no-repeat}
+html[data-style="cute"] .card{border:3px solid #BFDDF8;box-shadow:0 6px 0 rgba(23,58,122,.16),0 18px 34px rgba(23,58,122,.14)}
+.sec-head{text-align:center;max-width:860px;margin:0 auto clamp(40px,6vw,64px)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--en);font-weight:700;font-size:14px;letter-spacing:.24em;color:var(--a1);margin-bottom:14px}
+html[data-style="tech"] .kicker::before{content:"//";color:var(--a3)}
+html[data-style="cute"] .kicker{letter-spacing:.06em;font-size:16px;background:linear-gradient(180deg,#FFA92E,#F68F09);color:#fff;padding:4px 18px;border-radius:99px}
+h2{font-size:clamp(34px,5vw,62px);line-height:1.2;font-weight:900}
+html[data-style="cute"] h2{font-weight:400}
+.sec-head p{margin-top:16px;font-size:clamp(17px,1.8vw,20px);color:var(--muted)}
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* ================== 首屏 ================== */
+.hero{min-height:100svh;display:flex;align-items:center;padding:110px 0 70px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,60px);align-items:center;position:relative;z-index:2}
+.tag{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;padding:8px 18px;margin-bottom:22px}
+html[data-style="tech"] .tag{font-family:var(--en);letter-spacing:.2em;color:var(--a1);border:1px solid var(--line);border-radius:4px;background:rgba(47,230,255,.06)}
+html[data-style="cute"] .tag{background:#fff;border-radius:99px;box-shadow:0 4px 0 rgba(23,58,122,.15)}
+.h1t{font-family:var(--en);font-weight:900;font-size:clamp(64px,9.4vw,150px);line-height:1;white-space:nowrap;background:linear-gradient(180deg,#fff 10%,#9DEFFF 55%,#2FE6FF);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 28px rgba(47,230,255,.45))}
+.h1c{font-weight:400;font-size:clamp(60px,9vw,138px);line-height:1.05;filter:drop-shadow(0 6px 0 #173A7A)}
+.h1c span{display:inline-block;color:#2F6FD8;-webkit-text-stroke:12px #fff;paint-order:stroke fill;animation:pop .6s cubic-bezier(.3,1.8,.5,1) both}
+.h1c span:last-child{color:#F68F09}
+@keyframes pop{0%{scale:.3;opacity:0}100%{scale:1;opacity:1}}
+.h-sub{display:block;font-size:clamp(24px,3vw,40px);font-weight:900;margin-top:10px;line-height:1.3}
+html[data-style="cute"] .h-sub{font-weight:400}
+.lead{margin:22px 0 26px;font-size:clamp(18px,1.9vw,22px);max-width:34em}
+.equation{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:28px;font-weight:900}
+.equation span{padding:8px 16px;border-radius:12px;font-size:18px}
+.equation b{font-family:var(--en);font-size:26px;color:var(--hl);margin-right:4px}
+html[data-style="tech"] .equation span{border:1px solid var(--line);background:rgba(9,32,62,.6)}
+html[data-style="cute"] .equation span{background:#fff;box-shadow:0 4px 0 rgba(23,58,122,.15)}
+.equation span span{padding:0;background:none;box-shadow:none;border:0;font-size:inherit}
+.equation i{font-style:normal;color:var(--muted);font-size:22px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px}
+.hv{position:relative;aspect-ratio:1/1.02}
+.hv .layer{position:absolute;transition:transform .25s ease-out}
+.hv img{width:100%;height:auto}
+.hv-c img{filter:drop-shadow(0 10px 14px rgba(23,58,122,.25))}
+.floaty{animation:floaty 5s ease-in-out infinite}
+.floaty.d1{animation-delay:-1.2s}.floaty.d2{animation-delay:-2.4s}.floaty.d3{animation-delay:-3.6s}
+@keyframes floaty{50%{transform:translateY(-14px)}}
+.hv-t .frame{inset:4% 0 20% 4%;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 0 80px rgba(30,123,255,.35)}
+.hv-t .frame img{width:100%;height:100%;object-fit:cover}
+.scan{position:absolute;left:0;right:0;height:120px;top:-120px;background:linear-gradient(transparent,rgba(47,230,255,.25),transparent);animation:scan 3.6s linear infinite;z-index:2}
+@keyframes scan{to{top:100%}}
+.stamp{font-family:var(--en);font-weight:900;color:var(--a4);border:4px solid var(--a4);border-radius:8px;padding:6px 16px;font-size:clamp(18px,2.4vw,30px);transform:rotate(-10deg);background:rgba(3,13,28,.6);letter-spacing:.1em}
+
+/* ================== 序章 ================== */
+.prologue{max-width:820px;text-align:center}
+.prologue p{font-size:clamp(20px,2.4vw,28px);line-height:1.9;margin-bottom:30px;opacity:.15;transform:translateY(20px);transition:opacity .9s,transform .9s}
+.prologue p.in{opacity:1;transform:none}
+.prologue .warn{color:var(--a4);font-weight:900}
+.prologue .core{font-size:clamp(28px,3.6vw,46px);font-weight:900}
+html[data-style="cute"] .prologue .core{font-weight:400}
+.prologue .flash.in{animation:flash 1.2s}
+@keyframes flash{0%,40%,80%{opacity:1}20%,60%{opacity:.2}}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:60px}
+.fact{padding:28px;text-align:left}
+.fact .n{font-family:var(--en);font-weight:900;font-size:clamp(48px,5.4vw,72px);line-height:1;color:var(--hl)}
+.fact .n small{font-size:.32em;font-family:var(--zh);margin-left:6px;color:var(--muted)}
+.fact h3{font-size:22px;margin:10px 0 6px}
+.fact p{color:var(--muted);font-size:16px}
+
+/* ================== 地圖 ================== */
+.map-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(20px,3vw,40px);align-items:start}
+.map{padding:14px;position:sticky;top:96px}
+.map svg{width:100%;height:auto;display:block}
+.pin{cursor:pointer}
+.pin:focus{outline:none}
+.pin:focus-visible .badge{stroke:var(--a3);stroke-width:5}
+.pin .isl{transition:transform .35s cubic-bezier(.3,1.6,.5,1);transform-box:fill-box;transform-origin:center}
+.pin:hover .isl,.pin.cur .isl{transform:scale(1.1)}
+.pin .gem{opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s}
+.pin.got .gem{opacity:1;transform:none}
+.pin.cur .ring{opacity:1}
+.pin .ring{opacity:0;transition:opacity .3s}
+.pin .ring circle{animation:ping 1.6s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
+#walker{transition:transform 1s cubic-bezier(.5,0,.2,1)}
+.meter{margin-top:12px;padding:6px 8px 4px}
+.meter .top{display:flex;justify-content:space-between;font-weight:900;font-size:16px}
+.meter b{font-family:var(--en);color:var(--hl)}
+.meter .bar{height:12px;border-radius:99px;background:color-mix(in srgb,var(--text) 12%,transparent);overflow:hidden;margin-top:6px}
+.meter .bar i{display:block;height:100%;width:8%;background:var(--grad);transition:width .8s cubic-bezier(.3,1.4,.5,1)}
+.chap{padding:clamp(22px,3vw,34px);min-height:560px;display:flex;flex-direction:column}
+.chap.swap{animation:swap .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes swap{from{opacity:0;transform:translateY(18px)}}
+.c-top{display:flex;align-items:center;gap:14px}
+.c-no{font-family:var(--en);font-weight:900;font-size:clamp(54px,6vw,84px);line-height:.85;color:var(--c)}
+html[data-style="cute"] .c-no{-webkit-text-stroke:8px #fff;paint-order:stroke fill;filter:drop-shadow(0 4px 0 rgba(23,58,122,.25))}
+.c-place{font-weight:700;color:var(--muted);font-size:16px;line-height:1.45}
+.c-place b{display:block;color:var(--c);font-size:18px}
+.c-title{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.3;margin:12px 0}
+html[data-style="cute"] .c-title{font-weight:400}
+.c-scene{font-size:17px;color:var(--muted)}
+.c-img{margin:14px 0;border-radius:var(--r);overflow:hidden;background:#F3F6FA}
+.c-img img{width:100%;aspect-ratio:23/9.4;object-fit:cover}
+.talk{display:grid;gap:10px;margin:6px 0 4px;min-height:96px}
+.line{display:flex;gap:10px;align-items:flex-start;font-size:17px;line-height:1.55;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.line.on{opacity:1;transform:none}
+.line .av{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;overflow:hidden;font-family:var(--en);font-weight:900;font-size:13px}
+html[data-style="tech"] .line .av{border:1px solid var(--a1);color:var(--a1);background:rgba(47,230,255,.08)}
+html[data-style="cute"] .line .av{background:#EAF6FF}
+.line .av img{width:100%;height:100%;object-fit:contain}
+.line .bub{padding:9px 14px;border-radius:14px}
+html[data-style="tech"] .line .bub{background:rgba(3,13,28,.6);border:1px solid var(--line);font-family:Consolas,var(--zh)}
+html[data-style="cute"] .line .bub{background:#FFF6E2;border-radius:18px 18px 18px 4px}
+.line .bub b{display:block;font-size:13px;color:var(--a1)}
+html[data-style="cute"] .line .bub b{color:var(--a4)}
+.c-h{font-size:14px;font-weight:900;letter-spacing:.12em;color:var(--muted);margin:14px 0 8px}
+.c-tasks{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.c-tasks li{padding:5px 14px;border-radius:99px;font-size:15px;font-weight:700}
+html[data-style="tech"] .c-tasks li{border:1px solid var(--line);border-radius:4px}
+html[data-style="cute"] .c-tasks li{background:#EAF6FF}
+.c-foot{margin-top:auto;padding-top:16px;display:flex;align-items:center;gap:12px;font-weight:900}
+.c-foot svg{width:42px;height:42px;overflow:visible}
+.c-foot .cut{fill:var(--c);stroke:var(--c);stroke-width:3}
+html[data-style="cute"] .c-foot .cut{stroke:#fff;stroke-width:6;paint-order:stroke}
+.c-foot .eng{fill:none;stroke:rgba(255,255,255,.8);stroke-width:3}
+.c-nav{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.c-nav button{padding:10px 18px;border-radius:99px;cursor:pointer;font-weight:700;font-size:15px;background:transparent}
+html[data-style="tech"] .c-nav button{border:1px solid var(--a1);color:var(--a1)}
+html[data-style="cute"] .c-nav button{border:3px solid var(--ink);background:#fff}
+.c-nav button.play{margin-left:auto}
+
+/* ================== 招募信 ================== */
+.letter-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.idc{padding:26px;max-width:460px;margin:0 auto;width:100%;transform:rotate(-2deg);transition:transform .4s}
+.idc:hover{transform:rotate(0) scale(1.02)}
+html[data-style="tech"] .idc{background:linear-gradient(135deg,rgba(9,40,80,.95),rgba(4,18,40,.95));border:1.5px solid var(--a1);box-shadow:0 0 50px rgba(47,230,255,.3)}
+html[data-style="cute"] .idc{background:linear-gradient(160deg,#fff,#EAF6FF)}
+.idc .hd{display:flex;justify-content:space-between;align-items:center;font-family:var(--en);font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--a1)}
+html[data-style="cute"] .idc .hd{color:var(--a4)}
+.idc .bd{display:flex;gap:18px;align-items:center;margin:18px 0}
+.idc .ph{width:110px;height:130px;flex:none;border-radius:12px;display:grid;place-items:center;overflow:hidden}
+html[data-style="tech"] .idc .ph{border:1.5px solid var(--a1);color:var(--a1)}
+html[data-style="cute"] .idc .ph{background:#D9EFFE;border:3px solid #fff;box-shadow:0 4px 0 rgba(23,58,122,.15)}
+.idc .ph img{width:88%;height:auto}
+.idc .ph .ico{width:60px;height:60px}
+.idc dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:15px}
+.idc dt{color:var(--muted)}
+.idc dd{font-weight:900}
+.idc dd.big{font-size:22px}
+.idc input{width:100%;padding:12px 16px;font-size:18px;border-radius:12px;border:2px solid var(--line);background:transparent;font-weight:700}
+html[data-style="cute"] .idc input{border:3px solid #BFDDF8;background:#fff}
+.idc input:focus{outline:0;border-color:var(--a1)}
+.barcode{height:24px;margin-top:14px;background:repeating-linear-gradient(90deg,var(--a1) 0 2px,transparent 2px 4px,var(--a1) 4px 5px,transparent 5px 8px,var(--a1) 8px 11px,transparent 11px 13px)}
+.partners{display:flex;gap:8px;margin-top:12px}
+.partners button{flex:1;padding:6px;border-radius:14px;border:3px solid #BFDDF8;background:#fff;cursor:pointer;font-size:14px;font-weight:700}
+.partners button img{width:56px;height:56px;object-fit:contain;margin:0 auto}
+.partners button[aria-pressed="true"]{border-color:var(--a4);background:#FFF6E2}
+.reroll{margin-top:10px;background:none;border:0;color:var(--a1);font-weight:700;cursor:pointer;font-size:15px}
+.letter{padding:clamp(26px,4vw,44px);font-size:18px;line-height:2}
+html[data-style="tech"] .letter{font-family:var(--zh)}
+html[data-style="cute"] .letter{background:#FFFDF6}
+.letter h3{font-size:28px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.letter p{margin-bottom:12px}
+.letter .name{color:var(--hl);font-weight:900;border-bottom:2px dashed var(--hl)}
+.letter .sign{text-align:right;color:var(--muted);margin-top:18px}
+
+/* ================== 角色 ================== */
+.cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.char{padding:24px;text-align:center;transition:transform .3s}
+.char:hover{transform:translateY(-8px) rotate(-1deg)}
+.char .pic{width:130px;height:130px;margin:0 auto 12px;display:grid;place-items:center}
+.char .pic img{max-height:100%;width:auto}
+html[data-style="tech"] .char .pic{border-radius:50%;border:1.5px solid var(--a1);color:var(--a1);background:rgba(47,230,255,.08)}
+html[data-style="tech"] .char .pic .ico{width:56px;height:56px}
+.char h3{font-size:24px}
+.char h3 small{display:block;font-family:var(--en);font-size:13px;color:var(--a1);letter-spacing:.14em}
+html[data-style="cute"] .char h3 small{color:var(--a4)}
+.char .role{display:inline-block;margin:6px 0 10px;padding:2px 12px;border-radius:99px;font-size:14px;font-weight:700;background:color-mix(in srgb,var(--a1) 14%,transparent)}
+.char p{font-size:16px;color:var(--muted)}
+.char q{display:block;margin-top:10px;font-weight:700;font-size:16px;color:var(--text)}
+.team-shot{margin-bottom:22px;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);position:relative}
+.team-shot img{width:100%;aspect-ratio:21/9;object-fit:cover;object-position:center 30%}
+.callout{margin-top:28px;padding:24px 28px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.callout .big{font-size:48px;line-height:1}
+.callout b{font-size:20px;display:block}
+.callout .vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.callout .vs div{padding:10px 14px;border-radius:12px;font-size:16px}
+.callout .no{background:rgba(255,93,108,.12);text-decoration:line-through;text-decoration-color:rgba(255,93,108,.6)}
+.callout .yes{background:color-mix(in srgb,var(--a5) 16%,transparent)}
+
+/* ================== 角色成長／謎題卡 ================== */
+.ladder{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;align-items:end}
+.rung{text-align:center;padding:12px 6px;border-radius:10px;font-size:14px;font-weight:700;border:1px solid var(--line);background:rgba(9,32,62,.6);transition:transform .3s}
+.rung:hover{transform:translateY(-6px)}
+.rung b{display:block;font-family:var(--en);color:var(--a1);font-size:13px}
+.deck{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.flip{perspective:1000px;cursor:pointer;aspect-ratio:3/4;border:0;background:none;padding:0;text-align:left}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+.flip.open .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--r-lg);padding:18px;display:flex;flex-direction:column;overflow:hidden}
+.flip .b{transform:rotateY(180deg)}
+html[data-style="cute"] .flip .f{background:linear-gradient(160deg,#8A63E8,#5B3BC0);color:#fff;box-shadow:0 6px 0 rgba(23,58,122,.2)}
+html[data-style="cute"] .flip .b{background:#fff;border:3px solid #BFDDF8;box-shadow:0 6px 0 rgba(23,58,122,.16)}
+html[data-style="tech"] .flip .f{background:linear-gradient(160deg,#C8A26A,#9C7A45);color:#2A1C08;border:1px solid rgba(255,255,255,.2)}
+html[data-style="tech"] .flip .b{background:var(--solid);border:1px solid var(--a1)}
+.flip .no{font-family:var(--en);font-weight:900;font-size:14px;letter-spacing:.14em;opacity:.85}
+.flip .q{font-size:clamp(18px,1.8vw,22px);font-weight:900;line-height:1.4;margin-top:8px}
+html[data-style="cute"] .flip .q{font-weight:400}
+.flip .f img{width:52%;margin:auto auto 0;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+.flip .tape{margin-top:auto;font-family:var(--en);font-size:12px;letter-spacing:.14em;background:#FFD23F;color:#03111F;padding:4px 8px;text-align:center;transform:rotate(-3deg)}
+.flip .item{margin:auto 0;font-size:56px;text-align:center}
+.flip .b small{font-size:13px;color:var(--muted);font-weight:700;letter-spacing:.1em}
+.flip .b p{font-size:16px;line-height:1.6;margin-top:8px}
+.flip .b .who{display:flex;align-items:center;gap:8px;font-weight:900;color:var(--a1)}
+html[data-style="cute"] .flip .b .who{color:var(--a4)}
+.flip .b .who img{width:40px}
+.flip .b .when{margin-top:auto;font-size:14px;font-weight:700;color:var(--muted)}
+.found{margin:0 auto 22px;width:max-content;font-weight:900;padding:8px 18px;border-radius:99px}
+html[data-style="tech"] .found{border:1px solid var(--line)}
+html[data-style="cute"] .found{background:#fff;box-shadow:0 4px 0 rgba(23,58,122,.15)}
+.found b{font-family:var(--en);color:var(--hl);font-size:22px}
+
+/* ================== 認證 ================== */
+.cert-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.cert{padding:clamp(26px,4vw,40px);text-align:center;position:relative;overflow:hidden}
+html[data-style="tech"] .cert{background:linear-gradient(160deg,#0B2A55,#061633);border:2px solid #C8A23A;box-shadow:0 0 60px rgba(200,162,58,.25)}
+html[data-style="cute"] .cert{background:#FFFDF6;border:6px double #E0B04A}
+.cert .seal{width:120px;margin:0 auto 6px}
+.cert h3{font-size:clamp(24px,3vw,34px);line-height:1.3}
+html[data-style="cute"] .cert h3{font-weight:400}
+.cert .lv{font-family:var(--en);font-size:13px;letter-spacing:.2em;color:var(--muted);margin:4px 0 16px}
+.cert .who{font-size:clamp(28px,3.4vw,42px);font-weight:900;color:var(--hl);border-bottom:2px solid currentColor;display:inline-block;padding:0 24px;margin-bottom:10px}
+.cert p{font-size:16px;color:var(--muted)}
+.gems{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:20px}
+.gems div{aspect-ratio:1;display:grid;place-items:center;border-radius:50%;transition:transform .5s cubic-bezier(.3,1.6,.5,1),opacity .4s;opacity:.25;filter:grayscale(1)}
+.gems div.got{opacity:1;filter:none;transform:scale(1.08)}
+.gems svg{width:80%;height:80%;overflow:visible}
+.gems .cut{fill:var(--c);stroke:var(--c);stroke-width:3}
+html[data-style="cute"] .gems .cut{stroke:#fff;stroke-width:6;paint-order:stroke}
+.gems .eng{fill:none;stroke:rgba(255,255,255,.8);stroke-width:3}
+.cert-list{list-style:none;display:grid;gap:16px}
+.cert-list li{display:flex;gap:14px;align-items:flex-start}
+.cert-list .ico{width:30px;height:30px;color:var(--a1);margin-top:2px}
+.cert-list b{display:block;font-size:20px}
+.cert-list span{color:var(--muted);font-size:16px}
+
+/* ================== 結局 ================== */
+.ending{max-width:860px;margin:0 auto}
+.scene{padding:clamp(24px,4vw,40px);min-height:300px;cursor:pointer;user-select:none}
+.scene .line{font-size:clamp(18px,2vw,22px)}
+.scene .hint{margin-top:16px;font-size:14px;color:var(--muted);text-align:right}
+.next-map{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:40px}
+.nm{padding:18px 8px;text-align:center;border-radius:18px;font-weight:700;font-size:15px;position:relative;opacity:.85;transition:transform .3s,opacity .3s}
+.nm:hover{transform:translateY(-6px);opacity:1}
+.nm .e{font-size:34px;display:block}
+html[data-style="tech"] .nm{border:1px dashed var(--line);font-family:var(--zh)}
+html[data-style="cute"] .nm{background:rgba(255,255,255,.7);border:3px dashed #BFDDF8}
+.nm small{display:block;font-size:12px;color:var(--muted);font-family:var(--en);letter-spacing:.1em}
+.final{text-align:center}
+.final h2{margin-bottom:24px}
+.final .cta-row{justify-content:center}
+
+footer{position:relative;z-index:2;padding:48px 0 60px;border-top:1px solid var(--line)}
+html[data-style="cute"] footer{background:#084DAA;color:#fff;border:0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot img{height:58px;width:auto;filter:brightness(0) invert(1)}
+html[data-style="cute"] .foot .r{color:#CFE4FF}
+.foot .r{text-align:right;color:var(--muted);font-size:15px}
+
+@media (max-width:1080px){
+  .links{display:none}
+  .menu-btn{display:flex}
+  .nav.open .links{display:flex;position:absolute;top:76px;left:12px;right:12px;flex-direction:column;padding:12px;border-radius:18px;background:var(--solid);border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .switch{margin-left:auto}
+  .nav-cta{display:none}
+  .hero-grid,.map-wrap,.letter-wrap,.cert-wrap{grid-template-columns:1fr}
+  .hv{max-width:560px;width:100%;margin:0 auto}
+  .map{position:static}
+  .deck{grid-template-columns:repeat(2,1fr)}
+  .ladder{grid-template-columns:repeat(4,1fr)}
+  .next-map{grid-template-columns:repeat(4,1fr)}
+  .facts{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:17px}
+  .wrap{width:calc(100% - 32px)}
+  .brand span{display:none}
+  .switch span{padding:7px 10px;font-size:14px}
+  .ladder{grid-template-columns:repeat(2,1fr)}
+  .next-map{grid-template-columns:repeat(2,1fr)}
+  .chap{min-height:0}
+  .callout{grid-template-columns:1fr}
+  .deck{grid-template-columns:1fr}
+  .flip{aspect-ratio:4/3}
+  .callout .vs{grid-template-columns:1fr}
+  .foot .r{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  [data-reveal],.prologue p{opacity:1;transform:none}
+}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9A2.2 2.2 0 0 0 5 15z"/><path d="M12 15l-3-3a22 22 0 0 1 2-4A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22 22 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></symbol>
+  </defs>
+</svg>
+
+<!-- ================== 開場 ================== -->
+<div id="intro" aria-hidden="true">
+  <div class="in-box">
+    <img class="only-c" src="img/cute/pico.webp" alt="">
+    <div class="in-alert"><span class="only-c">⚠️ 警告</span><span class="only-t">N8 · WARNING</span></div>
+    <div class="in-type" id="introType"></div>
+    <div class="in-skip">點一下略過</div>
+  </div>
+</div>
+
+<div id="progress"></div>
+<canvas id="bg"></canvas><div class="bg-tint"></div>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="brand"><img src="img/weiyan-symbol-96.webp" alt="微研 Weiyan"><span>微研科學常態班<small>STORY WORLD</small></span></a>
+    <div class="links" id="links">
+      <a href="#prologue">序章</a><a href="#map">8 章地圖</a><a href="#letter"><span class="only-c">招募信</span><span class="only-t">報到通知</span></a><a href="#cast">角色</a><a href="#cards"><span class="only-c">謎題卡</span><span class="only-t">證物袋</span></a><a href="#cert">認證</a><a href="index.html">← 課程首頁</a>
+    </div>
+    <button class="switch" id="styleSwitch" type="button" aria-label="切換故事版本（可愛／科技）">
+      <span class="s-c"><svg class="ico"><use href="#i-spark"/></svg>可愛風</span>
+      <span class="s-t"><svg class="ico"><use href="#i-terminal"/></svg>科技風</span>
+    </button>
+    <a href="index.html#register" class="btn nav-cta">立即報名</a>
+    <button class="menu-btn" id="menuBtn" aria-label="開啟選單" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</nav>
+
+<!-- ================== 首屏 ================== -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag only-c">📖 STORY MODE｜3–4 年級的故事世界</span>
+      <span class="tag only-t">STORY MODE · 5–6 年級的故事世界</span>
+      <h1 class="h1c only-c" aria-label="小怪獸科學群島"><span>小</span><span>怪</span><span>獸</span><br><span>科</span><span>學</span><span>群</span><span>島</span></h1>
+      <h1 class="only-t"><span class="h1t">GRID-8</span></h1>
+      <span class="h-sub only-c">第一季《物理小怪獸出任務》</span>
+      <span class="h-sub only-t">城市科學案件簿</span>
+      <p class="lead only-c">原理塔失控，8 顆原理晶核散落到 8 座浮空島。孩子化身<b class="hl">小小原理探險員</b>，和波波、米粒、咚咚、PICO 一起，一島一島把力量找回來。</p>
+      <p class="lead only-t">CITY NEXT 開幕前，8 個展示區陸續出現「看似正常、結果不合理」的異常。孩子以 <b class="hl">GRID-8 見習技術調查員</b>身份加入，一案一案用證據破解。</p>
+      <div class="equation"><span><b>8</b>堂課</span><i>=</i><span><b>8</b><span class="only-c">座島</span><span class="only-t">個案件</span></span><i>=</i><span><b>8</b>個科學原理</span></div>
+      <div class="cta-row">
+        <a href="#letter" class="btn"><svg class="ico"><use href="#i-mail"/></svg><span class="only-c">打開招募信</span><span class="only-t">領取報到通知</span></a>
+        <a href="#map" class="btn ghost"><svg class="ico"><use href="#i-map"/></svg>看 8 章故事</a>
+      </div>
+    </div>
+    <div class="hv" id="hv">
+      <div class="hv-c only-c">
+        <div class="layer" data-depth="14" style="left:31%;top:0;width:38%"><img src="img/cute/tower.webp" alt="原理塔"></div>
+        <div class="layer" data-depth="34" style="right:-1%;top:2%;width:26%"><img class="floaty d1" src="img/cute/pink_big.webp" alt=""></div>
+        <div class="layer" data-depth="28" style="left:5%;top:30%;width:19%"><img class="floaty d3" src="img/cute/mili.webp" alt="米粒"></div>
+        <div class="layer" data-depth="30" style="right:5%;top:40%;width:18%"><img class="floaty d2" src="img/cute/pico.webp" alt="PICO"></div>
+        <div class="layer" data-depth="44" style="left:9%;bottom:4%;width:25%"><img class="floaty" src="img/cute/bobo.webp" alt="波波"></div>
+        <div class="layer" data-depth="40" style="right:10%;bottom:5%;width:23%"><img class="floaty d1" src="img/cute/dondo.webp" alt="咚咚"></div>
+        <div class="layer" data-depth="36" style="left:41%;bottom:0;width:17%"><img class="floaty d3" src="img/cute/chaos.webp" alt="亂亂怪"></div>
+      </div>
+      <div class="hv-t only-t">
+        <div class="layer frame" data-depth="12"><div class="scan"></div><img src="img/tech/team.webp" alt="GRID-8 三位見習調查員"></div>
+        <div class="layer" data-depth="30" style="right:2%;bottom:6%"><div class="stamp">CASE FILE · 8</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================== 序章 ================== -->
+<section id="prologue">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><span class="kicker">PROLOGUE · 序章</span>
+      <h2 class="only-c">原理塔失控的那一天</h2><h2 class="only-t">開幕前的八個異常</h2></div>
+    <div class="prologue only-c">
+      <p>在很遠很遠的天空上，有一座由許多浮空島組成的世界——「科學群島」。</p>
+      <p>這裡沒有魔法。<br>飛在天空中的船、自己轉動的輪子、會發光的能源塔……全部都靠一種叫「原理能量」的力量維持。</p>
+      <p class="flash">但某一天，群島中央的「原理塔」突然失控。</p>
+      <p>八種力量散落到不同島嶼：飛機飛不起來、船原地打轉、磁力車亂跑、影像消失、城市停電……</p>
+      <p class="warn">PICO：「警告！原理能量剩餘 8%！」</p>
+      <p class="core">看起來像魔法的事情，<br>其實都能用<span class="grad-text">科學</span>找到原因。</p>
+    </div>
+    <div class="prologue only-t">
+      <p>這座城市即將啟動大型科技展示計畫「CITY NEXT」。</p>
+      <p>八個展示區在開幕前陸續發生異常。<br>這些設備多數沒有明顯損壞，但測試結果不符合預期。</p>
+      <p class="flash">一般維修，找不出原因。</p>
+      <p>這類「設備看似正常，但現象與結果不合理」的問題，只有一個單位會處理——GRID-8 城市技術調查組。</p>
+      <p class="warn">GRID-8 的規則：「不要告訴我你覺得是哪裡壞了，給我證據。」</p>
+      <p class="core">你不是在演調查員，<br>你要做<span class="grad-text">調查員真正會做的事</span>。</p>
+    </div>
+    <div class="facts">
+      <div class="fact card" data-reveal><div class="n">8<small class="only-c">% 原理能量</small><small class="only-t">個展示區異常</small></div><h3 class="only-c">原理塔快要停了</h3><h3 class="only-t">CITY NEXT 即將開幕</h3><p class="only-c">每找回一顆晶核，原理塔就亮起一格；八顆全部回來，群島才能重新運轉。</p><p class="only-t">每破解一案，展示區就重新上線；八案全數結案，系統才能如期開幕。</p></div>
+      <div class="fact card" data-reveal><div class="n">6<small class="only-c">格任務卡</small><small class="only-t">段 CASE FILE</small></div><h3 class="only-c">先觀察，再動手</h3><h3 class="only-t">INCIDENT → CONCLUSION</h3><p class="only-c">我看到了什麼？我覺得為什麼？我的假設、動手實驗、發生了什麼、我找到的原理。</p><p class="only-t">事件、證據、假設、測試、結果、結論。案件不能只靠口頭答對，要拿出測試結果。</p></div>
+      <div class="fact card" data-reveal><div class="n">1<small class="only-c">張探險員認證</small><small class="only-t">級調查員資格</small></div><h3 class="only-c">科學群島初級探險員</h3><h3 class="only-t">Level 1 Technical Investigator</h3><p class="only-c">不是一般的結業證書，而是「我跟波波一起把八座島救回來了」的證明。</p><p class="only-t">8 / 8 CASES CLOSED 之後，由林組長正式認可。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== 地圖 ================== -->
+<section id="map">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><span class="kicker only-c">8 ISLANDS · 科學群島地圖</span><span class="kicker only-t">8 CASES · CITY NEXT 案件地圖</span>
+      <h2 class="only-c">每救回一座島，<br>原理塔就<span class="grad-text">亮起一格</span></h2>
+      <h2 class="only-t">每結一案，<br>城市就<span class="grad-text">恢復一區</span></h2>
+      <p>點地圖上的編號，看看每一章發生了什麼事。</p></div>
+    <div class="map-wrap">
+      <div class="map card" data-reveal>
+        <svg viewBox="0 0 800 600" id="mapSvg" role="img" aria-label="故事地圖"></svg>
+        <div class="meter"><div class="top"><span class="only-c">🔮 原理能量</span><span class="only-t">CITY NEXT 系統恢復</span><b id="meterTxt">8%</b></div><div class="bar"><i id="meterBar"></i></div></div>
+      </div>
+      <article class="chap card" id="chap" aria-live="polite" data-reveal></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================== 招募信 ================== -->
+<section id="letter">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><span class="kicker only-c">✉️ 探險員招募信</span><span class="kicker only-t">ONBOARDING · 報到通知</span>
+      <h2 class="only-c">PICO 寄了一封信<br><span class="grad-text">給你</span></h2>
+      <h2 class="only-t">你被選為<br><span class="grad-text">見習技術調查員</span></h2>
+      <p class="only-c">填上你的名字、選一位小怪獸夥伴，領取你的探險員證！</p>
+      <p class="only-t">輸入你的名字，領取 GRID-8 識別證與調查員編號。</p></div>
+    <div class="letter-wrap">
+      <div data-reveal>
+        <div class="idc card">
+          <div class="hd"><span class="only-c">SCIENCE MONSTER ISLANDS</span><span class="only-t">GRiD-8 · ID CARD</span><span id="idNo">#000</span></div>
+          <div class="bd">
+            <div class="ph"><img class="only-c" id="idPartner" src="img/cute/bobo.webp" alt=""><svg class="ico only-t"><use href="#i-user"/></svg></div>
+            <dl>
+              <dt class="only-c">身份</dt><dd class="only-c">小小原理探險員</dd>
+              <dt class="only-t">身份</dt><dd class="only-t">見習技術調查員</dd>
+              <dt>姓名</dt><dd class="big" id="idName">＿＿＿</dd>
+              <dt class="only-c">夥伴</dt><dd class="only-c" id="idPal">波波 BOBO</dd>
+              <dt class="only-t">權限</dt><dd class="only-t" style="color:var(--a3)">LEVEL 1 · ACCESS</dd>
+            </dl>
+          </div>
+          <input id="myName" maxlength="10" placeholder="輸入你的名字" aria-label="你的名字">
+          <div class="partners only-c" role="group" aria-label="選擇夥伴">
+            <button type="button" data-p="bobo" aria-pressed="true"><img src="img/cute/bobo.webp" alt="">波波</button>
+            <button type="button" data-p="mili" aria-pressed="false"><img src="img/cute/mili.webp" alt="">米粒</button>
+            <button type="button" data-p="dondo" aria-pressed="false"><img src="img/cute/dondo.webp" alt="">咚咚</button>
+          </div>
+          <div class="barcode only-t"></div>
+          <button class="reroll" id="reroll" type="button">🎲 換一個編號</button>
+        </div>
+      </div>
+      <div class="letter card" data-reveal>
+        <div class="only-c">
+          <h3>✉️ 探險員招募信</h3>
+          <p>親愛的 <span class="name" data-name>小探險員</span>：</p>
+          <p>我是 PICO，原理塔的導航機器人。原理塔失控了，8 顆原理晶核飛到了 8 座島，現在原理能量只剩下 8%！</p>
+          <p><b>我們需要你。</b>不是因為你已經知道所有答案，而是因為你願意先觀察、先問「為什麼」，再動手做做看。</p>
+          <p>你的夥伴 <span class="name" id="letterPal">波波</span> 已經在等你了。<span id="letterPalDesc"></span></p>
+          <p>每週三下午 1:30，我們在強納森美語教室集合，一起出發吧！</p>
+          <p class="sign">原理導航機器人 PICO　敬上</p>
+        </div>
+        <div class="only-t">
+          <h3>📁 GRID-8 報到通知</h3>
+          <p>見習技術調查員 <span class="name" data-name>＿＿＿</span>：</p>
+          <p>CITY NEXT 開幕前，八個展示區陸續出現異常。設備看起來都沒壞，但測試結果就是不對。</p>
+          <p>你被選為最年輕的一批見習調查員。你要做的事很簡單，也很難：<b>面對未知、提出假設、操作設備、排除可能，用數據和證據做判斷。</b></p>
+          <p>你的調查員編號是 <span class="name" id="letterNo">GRID8-J000</span>。第一案是資格測試，通過後取得現場調查權限。</p>
+          <p>每週三 13:30，強納森美語教室，準時報到。</p>
+          <p class="sign">GRID-8 現場主管　林組長</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== 角色 ================== -->
+<section id="cast">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><span class="kicker">CAST · 登場角色</span>
+      <h2 class="only-c">你的小怪獸<br><span class="grad-text">固定夥伴</span></h2>
+      <h2 class="only-t">GRID-8<br><span class="grad-text">現場團隊</span></h2></div>
+    <div class="team-shot only-t" data-reveal><img src="img/tech/team.webp" alt="三位 GRID-8 見習調查員" loading="lazy"></div>
+    <div class="cast" id="castGrid"></div>
+    <div class="callout card" data-reveal>
+      <div class="big"><span class="only-c">🤖</span><span class="only-t">⚖️</span></div>
+      <div>
+        <b class="only-c">PICO 從來不直接說答案</b><b class="only-t">GRID-8 的規則：證據導向</b>
+        <div class="vs">
+          <div class="no only-c">PICO 不會說：「因為重心在支點下方。」</div>
+          <div class="yes only-c">PICO 會說：「奇怪……我把重量移到左邊後，它好像變得更容易倒了。」</div>
+          <div class="no only-t">「我覺得應該是磁鐵吧。」</div>
+          <div class="yes only-t">「我改了配重位置三次，臨界角度都一樣，所以不是磁鐵。」</div>
+        </div>
+      </div>
+    </div>
+    <div class="only-t" style="margin-top:40px" data-reveal>
+      <h3 style="font-size:24px;margin-bottom:14px;text-align:center">8 堂課的角色成長</h3>
+      <div class="ladder" id="ladder"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== 謎題卡／證物袋 ================== -->
+<section id="cards">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><span class="kicker only-c">🃏 亂亂怪的謎題卡</span><span class="kicker only-t">EVIDENCE BAGS · 證物袋</span>
+      <h2 class="only-c">亂亂怪丟出了<br><span class="grad-text">8 個科學問題</span></h2>
+      <h2 class="only-t">每一案，<br>都有一袋<span class="grad-text">待分析的證物</span></h2>
+      <p class="only-c">翻開卡片看看 PICO 的線索。答案不在卡片上——要到課堂上親手做實驗才找得到！</p>
+      <p class="only-t">打開證物袋看看 N8 的初步紀錄。結論不在袋子裡——要靠你在現場測試取得。</p></div>
+    <div class="found">已翻開 <b id="foundN">0</b> / 8</div>
+    <div class="deck" id="deck"></div>
+  </div>
+</section>
+
+<!-- ================== 認證 ================== -->
+<section id="cert">
+  <div class="wrap cert-wrap">
+    <div class="cert" data-reveal>
+      <img class="seal only-c" src="img/cute/bobo.webp" alt="">
+      <img class="seal only-t" src="img/tech/badge.webp" alt="" style="width:240px;border-radius:8px">
+      <h3 class="only-c">科學群島初級探險員認證</h3>
+      <h3 class="only-t">Level 1 Technical Investigator</h3>
+      <div class="lv only-c">SCIENCE EXPLORER · LEVEL 1</div>
+      <div class="lv only-t">技術調查員第一級資格</div>
+      <div class="who" data-name>＿＿＿</div>
+      <p class="only-c">已和夥伴一起找回 8 顆原理晶核，成功重新啟動原理塔。</p>
+      <p class="only-t">已完成 CASE 01–08 全部案件調查，8 / 8 CASES CLOSED。</p>
+      <div class="gems" id="gems"></div>
+    </div>
+    <div data-reveal>
+      <span class="kicker only-c">🏅 完成探險</span><span class="kicker only-t">8 / 8 CASES CLOSED</span>
+      <h2 class="only-c">集滿 8 枚徽章，<br><span class="grad-text">成為初級探險員</span></h2>
+      <h2 class="only-t">8 案結案，<br><span class="grad-text">取得調查員資格</span></h2>
+      <ul class="cert-list" style="margin-top:22px">
+        <li><svg class="ico"><use href="#i-award"/></svg><div><b class="only-c">每堂一枚原理徽章</b><b class="only-t">每堂一個 CASE CLOSED 章</b><span>上面地圖每看完一章，左邊的認證就會亮起一格。</span></div></li>
+        <li><svg class="ico"><use href="#i-file"/></svg><div><b class="only-c">同一張任務卡，用八次</b><b class="only-t">個人案件簿</b><span class="only-c">故事體驗和科學探究流程綁在一起，越玩越會想。</span><span class="only-t">每堂結束蓋章，讓八堂形成連續進度。</span></div></li>
+        <li><svg class="ico"><use href="#i-spark"/></svg><div><b>不是背答案，是自己找到原因</b><span class="only-c">物理名詞在孩子觀察與測試之後才正式出現。</span><span class="only-t">老師只在學生拿出證據之後，才正式命名原理。</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================== 結局 ================== -->
+<section id="ending">
+  <div class="wrap ending">
+    <div class="sec-head" data-reveal><span class="kicker">EPILOGUE · 最後一幕</span>
+      <h2 class="only-c">原理塔，<span class="grad-text">重新啟動</span></h2>
+      <h2 class="only-t">CITY NEXT，<span class="grad-text">重新上線</span></h2></div>
+    <div class="scene card" id="scene" role="button" tabindex="0" aria-label="點一下看下一句" data-reveal><div class="talk" id="sceneTalk"></div><div class="hint" id="sceneHint">點一下，看下一句 ›</div></div>
+    <p style="text-align:center;margin-top:40px;font-weight:900;font-size:20px"><span class="only-c">原理塔上方出現一張新地圖……</span><span class="only-t">N8 ▸ 偵測到新的案件類型……</span></p>
+    <div class="next-map" id="nextMap"></div>
+    <p style="text-align:center;margin-top:16px;color:var(--muted)">故事不在第八堂結束——下一季還有新的地方可以去。</p>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap" data-reveal>
+    <h2 class="only-c">一起出發，<br><span class="grad-text">把 8 座島救回來！</span></h2>
+    <h2 class="only-t">準備好接受<br><span class="grad-text">GRID-8 的任務了嗎？</span></h2>
+    <p style="color:var(--muted);margin-bottom:26px">每週三 13:30–15:00・8 堂・每班限 12 人・高科大旁強納森美語教室</p>
+    <div class="cta-row"><a href="index.html#register" class="btn"><svg class="ico"><use href="#i-rocket"/></svg>立即報名</a><a href="index.html" class="btn ghost">← 回課程首頁</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="index.html"><img src="img/weiyan-logo-480.webp" alt="微研 WEIYAN 科學教育"></a>
+    <div class="r">《小怪獸科學群島》／《GRID-8 城市科學案件簿》<br>© 2026 微研 Weiyan 科學教育</div>
+  </div>
+</footer>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = matchMedia('(pointer: fine)').matches;
+const style = () => document.documentElement.dataset.style;
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+/* ================== 8 顆晶核（晶核圖檔雷切外型） ================== */
+const CORES = [
+  { tech: '#2F6BFF', cute: '#5BAA2E', name: '平衡', cut: ['M10 26 L90 26 L90 40 L62 40 L76 86 L24 86 L38 40 L10 40 Z'], eng: ['M15 30 L85 30 L85 36 L58 36 L70 82 L30 82 L42 36 L15 36 Z'] },
+  { tech: '#3DD6A8', cute: '#2F6FD0', name: '飛行', cut: ['M50 10 L92 74 L50 58 L8 74 Z'], eng: ['M50 20 L82 69 L50 52 L18 69 Z'] },
+  { tech: '#22C3DD', cute: '#1A86C8', name: '水力', cut: ['M8 46 Q22 26 36 46 Q50 66 64 46 Q78 26 92 46 L92 88 L8 88 Z'], eng: ['M14 49 Q24 37 34 49 Q50 61 66 49 Q76 37 86 49 L86 82 L14 82 Z'] },
+  { tech: '#FF4D5A', cute: '#6A3FC8', name: '磁力', cut: ['M20 86 L20 46 A30 30 0 0 1 80 46 L80 86 L58 86 L58 46 A12 12 0 0 0 42 46 L42 86 Z'], eng: ['M25 81 L25 46 A25 25 0 0 1 75 46 L75 81 L63 81 L63 46 A17 17 0 0 0 37 46 L37 81 Z'] },
+  { tech: '#A9D8FF', cute: '#8A63E8', name: '光', cut: ['M50 4 C55 31 69 45 96 50 C69 55 55 69 50 96 C45 69 31 55 4 50 C31 45 45 31 50 4 Z'], eng: ['M50 28 L72 50 L50 72 L28 50 Z'] },
+  { tech: '#FFD93B', cute: '#F08A12', name: '電力', cut: ['M58 6 L22 54 L46 54 L40 94 L80 40 L54 40 Z'], eng: ['M56 18 L33 50 L54 50 L48 79 L71 45 L50 45 Z'] },
+  { tech: '#FF8A2A', cute: '#E8501E', name: '太陽', cut: ['M73.4 44.6 L96 50 L73.4 55.4 A24 24 0 0 1 70.4 62.7 L82.5 82.5 L62.7 70.4 A24 24 0 0 1 55.4 73.4 L50 96 L44.6 73.4 A24 24 0 0 1 37.3 70.4 L17.5 82.5 L29.6 62.7 A24 24 0 0 1 26.6 55.4 L4 50 L26.6 44.6 A24 24 0 0 1 29.6 37.3 L17.5 17.5 L37.3 29.6 A24 24 0 0 1 44.6 26.6 L50 4 L55.4 26.6 A24 24 0 0 1 62.7 29.6 L82.5 17.5 L70.4 37.3 A24 24 0 0 1 73.4 44.6 Z'], eng: ['M50 35 A15 15 0 1 1 49.9 35 Z'] },
+  { tech: '#9A6BFF', cute: '#1F8C8C', name: '能量轉換', cut: ['M50 16 A34 34 0 0 1 84 50 L96 50 L84 74 L72 50 L68 50 A18 18 0 0 0 50 32 Z', 'M50 84 A34 34 0 0 1 16 50 L4 50 L16 26 L28 50 L32 50 A18 18 0 0 0 50 68 Z'], eng: ['M50 24 A26 26 0 0 1 76 50', 'M50 76 A26 26 0 0 1 24 50'] }
+];
+const col = i => CORES[i][style()];
+const coreSVG = i => `<svg viewBox="0 0 100 100" aria-hidden="true">${CORES[i].cut.map(d => `<path class="cut" d="${d}"/>`).join('')}${CORES[i].eng.map(d => `<path class="eng" d="${d}"/>`).join('')}</svg>`;
+
+/* ================== 8 章故事（取自兩份世界觀設定） ================== */
+const AV = { bobo: 'img/cute/bobo.webp', mili: 'img/cute/mili.webp', dondo: 'img/cute/dondo.webp', pico: 'img/cute/pico.webp', chaos: 'img/cute/chaos.webp' };
+const NM = { bobo: '波波', mili: '米粒', dondo: '咚咚', pico: 'PICO', chaos: '亂亂怪', lin: '林組長', su: '蘇妍', n8: 'N8' };
+const CH = [
+  { kit: '平衡機器人', pc: ['重心', '平衡', '力矩'], pt: ['重心', '平衡', '力矩'],
+    c: { place: '第一章', isl: '搖搖島', title: '怎麼推都不倒？！', scene: '這座島所有東西都歪歪的。房子斜著、橋斜著，連樹都快倒了。但只有一隻奇怪的機器人——怎麼推都不倒。守護怪獸「穩穩獸」在旁邊看著大家。', talk: [['bobo', '它是不是腳底有膠水？'], ['mili', '先不要猜答案，我們做實驗看看！']], tasks: ['修復平衡機器人', '改變配重位置', '觀察支撐與重心', '找出不倒的原因'] },
+    t: { place: 'CASE 01', isl: '資格測試', role: '見習調查員', title: '一台怎麼推都不倒的機器', scene: '作為資格測試。展示裝置嚴重傾斜卻沒有掉落。有人懷疑是磁鐵或特殊機構，你必須利用配重、支點與重心測試證明真正原因。', talk: [['n8', 'WARNING ▸ 展示裝置傾斜角異常，仍維持平衡。'], ['lin', '我不要猜測，測給我看。']], tasks: ['原始狀態測試', '配重位置測試', '臨界位置測試', '畫出推測重心', '提交 EVIDENCE 01'] } },
+  { kit: '滑行飛機', pc: ['重力', '空氣阻力', '運動'], pt: ['重力', '空氣阻力', '重心', '穩定性'],
+    c: { place: '第二章', isl: '飛飛島', title: '飛吧！紙上飛行員', scene: '飛飛島原本有很多滑翔機，可是現在全部都「啪！」地掉下來。原來是亂亂怪偷偷把飛機的重量移到奇怪的位置。', talk: [['bobo', '是不是丟越大力就飛越遠？'], ['chaos', '嘿嘿，重量藏在哪裡呢～']], tasks: ['調整機翼', '調整重心', '改變重量', '比較投射角度', '滑翔王挑戰'] },
+    t: { place: 'CASE 02', isl: '飛行測試區', role: '飛行測試組', title: '一直偏離航線的滑翔機', scene: 'CITY NEXT 的滑翔載具可以飛，但無法穩定降落在指定區域。你以 Flight Test Team 身份調整重心、翼面與配重。', talk: [['n8', 'TEST RESULT ▸ 落點偏離 Landing Zone。'], ['su', '你一次改了三個條件，那我要怎麼知道是哪一個造成差異？']], tasks: ['調整重心與翼面', '一次只改一個條件', '連續兩次降落指定區'] } },
+  { kit: '明輪船', pc: ['推進', '阻力', '作用力'], pt: ['推進力', '水阻力', '能量轉換'],
+    c: { place: '第三章', isl: '噗通島', title: '小船不用槳也會跑？', scene: '這裡原本是一個熱鬧的海港，但所有船現在都停在海中央。大家拿到一艘明輪船，可是沒有人告訴你它要怎麼前進。', talk: [['dondo', '沒有槳……到底要怎麼前進？'], ['pico', '如果輪子往後推水，船會往哪裡走呢？']], tasks: ['改變葉片', '改變重量', '改變轉速', '比較前進效果'] },
+    t: { place: 'CASE 03', isl: '河岸展示區', role: '工程分析組', title: '馬達明明在轉，船為什麼走不快？', scene: '河岸展示區發出技術支援請求：馬達與明輪都正常，但船速低於驗收標準。你要找出推進效率流失在哪裡。', talk: [['n8', 'STATUS ▸ 馬達正常｜明輪正常｜船速未達標。'], ['lin', '效率掉在哪裡？數據拿來。']], tasks: ['葉片深度', '葉片數量', '重量與左右平衡', '提交 Engineering Recommendation'] } },
+  { kit: '磁力小車', pc: ['吸引', '排斥', '磁場'], pt: ['磁極', '吸引排斥', '磁場'],
+    c: { place: '第四章', isl: '磁磁山', title: '看不見的超能力！', scene: '這座島非常奇怪。石頭會互相推開，車子不用碰就會移動。甚至連波波都被磁力車推走了！', talk: [['bobo', '欸欸欸欸欸——！'], ['mili', '規則是：全程都不准碰到小車喔！']], tasks: ['不碰小車', '只用磁鐵前進', '比較吸引與排斥', '把車送到終點'] },
+    t: { place: 'CASE 04', isl: '展示車庫', role: '證據調查組', title: '沒有人碰，車為什麼自己動了？', scene: '監視器拍到一台未通電、無人接觸的展示車自行移動。你要排除地板震動、殘餘動力等可能性。', talk: [['n8', 'INCIDENT ▸ 展示車未通電、無人接觸，卻自行移動。'], ['lin', '能重現，才算證據。']], tasks: ['排除地板震動', '排除殘餘動力', '不同材質測試', '不接觸車體重現事件'] } },
+  { kit: '全息投影', pc: ['光的反射', '虛像'], pt: ['光的反射', '虛像', '光路'],
+    c: { place: '第五章', isl: '幻光城', title: '空中出現幽靈？！', scene: '進入城市後，突然出現一隻漂浮的小怪獸。看得到影像，卻完全摸不到。光從哪裡來？眼睛為什麼看得到？', talk: [['bobo', '有鬼！！！'], ['mili', '等等……你摸得到它嗎？']], tasks: ['觀察漂浮影像', '判斷實際位置', '研究光線方向', '完成幻光裝置'] },
+    t: { place: 'CASE 05', isl: '光影展館', role: '光學分析組', title: '監視器拍到了一個不存在的人影', scene: '閉館後監視系統多次拍到漂浮影像，但現場沒有實體物件。你以 Optical Analysis Team 身份調查影像來源。', talk: [['n8', 'ALERT ▸ 閉館後偵測到人影｜現場無實體物件。'], ['su', '先畫出光源、反射面和觀察者的位置。']], tasks: ['鏡片與手電筒測試', '透明片與白紙重建光路', '提交 Incident Reconstruction'] } },
+  { kit: '電動賽車', pc: ['電路', '化學能→電能→機械能→動能'], pt: ['電路', '馬達', '摩擦', '能量轉換'],
+    c: { place: '第六章', isl: '霹靂城', title: '電力賽車 GO！', scene: '進入霹靂城後，整座城市停電，交通全部停止。咚咚找到一台看起來沒有損壞的車，大家要從電池、電線、馬達和輪子一路檢查。', talk: [['dondo', '車子沒有壞啊？'], ['bobo', '那我們推它？']], tasks: ['檢查電池', '檢查電線', '確認馬達', '觀察輪子與傳動'] },
+    t: { place: 'CASE 06', isl: '賽車維修站', role: '故障診斷組', title: '車有電，為什麼完全不動？', scene: '桌上直接出現一台故障車，不同小組的故障原因不同。規則是：不允許直接換整台。', talk: [['n8', 'RULE ▸ 禁止整台更換。'], ['lin', '從電源開始，一段一段排除。']], tasks: ['電源', '馬達', '傳動', '輪組', '建立 Diagnostic Tree', '2 公尺功能驗證'] } },
+  { kit: '太陽能賽車', pc: ['太陽能', '光能→電能→動能'], pt: ['太陽能', '能量轉換', '效率', '數據分析'],
+    c: { place: '第七章', isl: '太陽谷', title: '抓住太陽來開車！', scene: '這座島沒有插座，也沒有電池。大家抬頭看向天空，發現唯一能用的能源，就是太陽。', talk: [['pico', '偵測不到任何外部能源。'], ['bobo', '……難道要把太陽抓下來？']], tasks: ['改變太陽能板角度', '比較 30°、60°', '測試遮光', '觀察車速變化'] },
+    t: { place: 'CASE 07', isl: '太陽能測試道', role: '性能測試組', title: '同樣的太陽，為什麼這台比較慢？', scene: '兩台規格相同的太陽能車，在同一環境下速度卻差很多。你必須找出設定差異與性能的關係。', talk: [['n8', 'DATA ▸ A 車 / B 車 規格相同｜1 公尺時間差異大。'], ['su', '0°、30°、45°、60°、90°，每一個都要有紀錄。']], tasks: ['測試不同角度', '記錄 1 公尺時間', '提出 Recommended Configuration'] } },
+  { kit: '手搖發電機', pc: ['能量轉換', '機械能→電能→光能'], pt: ['機械能', '電能', '電磁感應', '能量轉換'],
+    c: { place: '最終章', isl: '原理塔', title: '我的手竟然可以發電！', scene: '七顆晶核回到原理塔，但原理塔還是不亮。PICO 顯示缺少最後一種能量，而大家已經沒有電池可以用了……', talk: [['pico', '缺少最後一種能量。'], ['bobo', '那我們自己做電呢？']], tasks: ['慢速轉動', '快速轉動', '觀察 LED 亮度', '重新啟動原理塔'] },
+    t: { place: 'FINAL CASE', isl: '中央電力站', role: '獨立技術組', title: '全區停電', scene: 'CITY NEXT 開幕前一小時，主電源與備援系統同時離線。現場只剩機械式發電設備，GRID-8 沒有其他支援人員。', talk: [['n8', 'CRITICAL ▸ MAIN POWER OFFLINE｜BACKUP OFFLINE。'], ['lin', '這次沒有人支援你們。分工，然後把系統帶回來。']], tasks: ['研究轉速', '研究方向', '研究接線', '共同完成系統重啟'] } }
+];
+
+/* ================== 開場 ================== */
+(function intro() {
+  const el = $('#intro'), out = $('#introType');
+  const txt = style() === 'cute' ? '原理塔失控了！\n原理能量剩餘 8%……' : 'CITY NEXT ▸ 8 個展示區異常\n等待見習調查員報到……';
+  let i = 0, done = false;
+  const close = () => { if (done) return; done = true; el.classList.add('out'); };
+  el.addEventListener('click', close);
+  if (reduce) return close();
+  (function type() {
+    out.innerHTML = txt.slice(0, ++i).replace('\n', '<br>');
+    if (i < txt.length) setTimeout(type, 55); else setTimeout(close, 900);
+  })();
+  setTimeout(close, 5000);
+})();
+
+/* ================== 背景 ================== */
+const bg = (function () {
+  const cv = $('#bg'), x = cv.getContext('2d'); let W, H, parts = [], dpr = Math.min(2, devicePixelRatio || 1), raf;
+  function size() { W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr; cv.style.width = innerWidth + 'px'; cv.style.height = innerHeight + 'px'; }
+  function seed() {
+    const tech = style() === 'tech', n = tech ? Math.min(70, innerWidth / 18 | 0) : Math.min(22, innerWidth / 60 | 0);
+    parts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .3 * dpr, vy: tech ? (Math.random() - .5) * .3 * dpr : -(Math.random() * .3 + .1) * dpr, r: tech ? (Math.random() * 1.5 + .6) * dpr : (Math.random() * 18 + 10) * dpr, k: Math.random() < .4 ? 's' : 'c', a: Math.random() * 6.28 }));
+  }
+  function star(cx, cy, r, rot) { x.beginPath(); for (let i = 0; i < 8; i++) { const rr = i % 2 ? r * .28 : r, a = rot + i * Math.PI / 4; x.lineTo(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr); } x.closePath(); }
+  function draw() {
+    x.clearRect(0, 0, W, H);
+    const tech = style() === 'tech';
+    for (const p of parts) { p.x += p.vx; p.y += p.vy; p.a += .01; if (tech) { if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; } else if (p.y < -60 * dpr) { p.y = H + 40 * dpr; p.x = Math.random() * W; } }
+    if (tech) {
+      const D = 130 * dpr;
+      for (let i = 0; i < parts.length; i++) { const a = parts[i]; for (let j = i + 1; j < parts.length; j++) { const b = parts[j], d = Math.hypot(a.x - b.x, a.y - b.y); if (d < D) { x.strokeStyle = `rgba(47,230,255,${(1 - d / D) * .2})`; x.lineWidth = dpr; x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke(); } } x.fillStyle = 'rgba(47,230,255,.8)'; x.beginPath(); x.arc(a.x, a.y, a.r, 0, 6.28); x.fill(); }
+    } else {
+      for (const p of parts) {
+        if (p.k === 's') { x.globalAlpha = .75; x.fillStyle = '#FFF3B0'; star(p.x, p.y, p.r * .5, p.a); x.fill(); }
+        else { x.globalAlpha = .5; x.fillStyle = '#fff'; x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.28); x.arc(p.x + p.r * 1.1, p.y + p.r * .25, p.r * .8, 0, 6.28); x.arc(p.x - p.r * 1.05, p.y + p.r * .3, p.r * .7, 0, 6.28); x.fill(); }
+      }
+      x.globalAlpha = 1;
+    }
+    raf = requestAnimationFrame(draw);
+  }
+  addEventListener('resize', () => { size(); seed(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) cancelAnimationFrame(raf); else if (!reduce) raf = requestAnimationFrame(draw); });
+  size(); seed(); if (!reduce) raf = requestAnimationFrame(draw);
+  return { reseed: seed };
+})();
+
+/* ================== 風格切換 ================== */
+function applyStyle(s, ev) {
+  const set = () => { document.documentElement.dataset.style = s; store.set('weiyan-style', s); $('meta[name=theme-color]').content = s === 'tech' ? '#030D1C' : '#7CC2F6'; bg.reseed(); renderAll(); };
+  if (!document.startViewTransition || reduce) return set();
+  const r = ev.currentTarget.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2, rad = Math.hypot(Math.max(cx, innerWidth - cx), Math.max(cy, innerHeight - cy));
+  document.startViewTransition(set).ready.then(() => document.documentElement.animate({ clipPath: [`circle(0 at ${cx}px ${cy}px)`, `circle(${rad}px at ${cx}px ${cy}px)`] }, { duration: 700, easing: 'cubic-bezier(.7,0,.2,1)', pseudoElement: '::view-transition-new(root)' }));
+}
+$('#styleSwitch').addEventListener('click', e => applyStyle(style() === 'tech' ? 'cute' : 'tech', e));
+
+/* ================== 導覽、進場、視差 ================== */
+const nav = $('#nav'), menuBtn = $('#menuBtn');
+menuBtn.addEventListener('click', () => { const o = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o); });
+$$('#links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+addEventListener('scroll', () => { const m = document.documentElement.scrollHeight - innerHeight; $('#progress').style.width = (scrollY / m * 100) + '%'; nav.classList.toggle('scrolled', scrollY > 30); }, { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15, rootMargin: '0px 0px -40px' });
+function observe() { $$('[data-reveal]:not(.in), .prologue p:not(.in)').forEach(el => io.observe(el)); }
+if (fine && !reduce) {
+  const hv = $('#hv');
+  $('.hero').addEventListener('pointermove', e => {
+    const r = hv.getBoundingClientRect(), dx = (e.clientX - (r.left + r.width / 2)) / r.width, dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+    $$('.layer', hv).forEach(l => l.style.transform = `translate(${-dx * (+l.dataset.depth || 10)}px,${-dy * (+l.dataset.depth || 10)}px)`);
+  });
+}
+
+/* ================== 地圖 ================== */
+let cur = 0, autoT = null;
+const seen = new Set();
+// 前 7 座島繞一圈，最終章就在中央的原理塔
+const POS = Array.from({ length: 8 }, (_, i) => { if (i === 7) return [400, 430]; const a = (i * 360 / 7 - 90) * Math.PI / 180; return [400 + Math.cos(a) * 305, 290 + Math.sin(a) * 225]; });
+const TPOS = [[130, 110], [330, 80], [560, 100], [690, 250], [640, 450], [430, 510], [190, 480], [400, 300]];
+const narrow = matchMedia('(max-width: 700px)');
+function renderMap() {
+  const cute = style() === 'cute', svg = $('#mapSvg');
+  // 手機上地圖縮得很小，把島嶼與文字放大
+  const k = narrow.matches ? 1.4 : 1;
+  if (cute) {
+    const path = POS.map((p, i) => (i ? 'L' : 'M') + p[0] + ' ' + p[1]).join(' ');
+    svg.innerHTML = `
+      <path d="${path}" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="2 14" stroke-linecap="round" opacity=".9"/>
+      <image href="img/cute/tower.webp" x="344" y="150" width="112" height="264"/>
+      ${POS.map((p, i) => `<g class="pin" data-i="${i}" tabindex="0" role="button" aria-label="${CH[i].c.place}：${CH[i].c.isl}" transform="translate(${p[0]} ${p[1]})" style="--c:${col(i)}">
+        <g class="ring"><circle r="48" fill="none" stroke="#fff" stroke-width="4"/></g>
+        <g class="isl"><g transform="scale(${k})">
+          ${i < 7 ? `<path d="M-56 2 Q0 -10 56 2 L20 46 Q0 58 -20 46 Z" fill="#B07A57" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+          <ellipse cx="0" cy="0" rx="60" ry="15" fill="#7ED957" stroke="#fff" stroke-width="4"/>` : ''}
+          <circle class="badge" cx="0" cy="-26" r="20" fill="${col(i)}" stroke="#fff" stroke-width="4"/>
+          <text x="0" y="-19" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="20" fill="#fff">${i + 1}</text>
+        </g></g>
+        <g class="gem" transform="translate(30 -52) scale(.3)">${CORES[i].cut.map(d => `<path d="${d}" fill="${col(i)}" stroke="#fff" stroke-width="10" paint-order="stroke"/>`).join('')}</g>
+        <text x="0" y="${78 * k}" text-anchor="middle" font-family="Huninn, sans-serif" font-size="${22 * k}" fill="#173A7A" stroke="#fff" stroke-width="6" paint-order="stroke">${CH[i].c.isl}</text>
+      </g>`).join('')}
+      <g id="walker"><image href="img/cute/bobo.webp" x="-26" y="-92" width="52" height="60"/></g>`;
+  } else {
+    svg.innerHTML = `
+      <defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="rgba(47,230,255,.08)"/></pattern></defs>
+      <rect width="800" height="600" rx="12" fill="#041328"/><rect width="800" height="600" fill="url(#g)"/>
+      <path d="M0 300H800M400 0V600M0 140H800M0 470H800M210 0V600M600 0V600" stroke="rgba(47,230,255,.18)" stroke-width="14"/>
+      <path d="M0 300H800M400 0V600M0 140H800M0 470H800M210 0V600M600 0V600" stroke="rgba(255,210,63,.35)" stroke-width="1.5" stroke-dasharray="10 12"/>
+      <path d="M520 600 Q560 420 800 380" fill="none" stroke="rgba(30,123,255,.35)" stroke-width="40"/>
+      ${TPOS.map((p, i) => `<g class="pin" data-i="${i}" tabindex="0" role="button" aria-label="${CH[i].t.place}：${CH[i].t.isl}" transform="translate(${p[0]} ${p[1]})" style="--c:${col(i)}">
+        <g class="ring"><circle r="54" fill="none" stroke="${col(i)}" stroke-width="2"/></g>
+        <g class="isl"><g transform="scale(${k})">
+          <rect x="-62" y="-40" width="124" height="80" rx="6" fill="rgba(9,32,62,.92)" stroke="${col(i)}" stroke-width="2"/>
+          <text x="-52" y="-18" font-family="Orbitron, sans-serif" font-size="13" font-weight="700" fill="${col(i)}">${i === 7 ? 'FINAL' : 'CASE 0' + (i + 1)}</text>
+          <text x="-52" y="10" font-family="Noto Sans TC, sans-serif" font-size="17" font-weight="700" fill="#E8F4FF">${CH[i].t.isl}</text>
+          <circle class="badge" cx="46" cy="-22" r="5" fill="#FF5D6C"><animate attributeName="opacity" values="1;.2;1" dur="1.2s" repeatCount="indefinite"/></circle>
+        </g></g>
+        <g class="gem"><text x="0" y="30" text-anchor="middle" transform="rotate(-8)" font-family="Orbitron, sans-serif" font-size="14" font-weight="900" fill="#1FD1A5" stroke="#1FD1A5" stroke-width=".5">CLOSED</text></g>
+      </g>`).join('')}
+      <g id="walker"><circle r="9" fill="#FFD23F"/><circle r="9" fill="none" stroke="#FFD23F" stroke-width="2"><animate attributeName="r" values="9;24" dur="1.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="1.4s" repeatCount="indefinite"/></circle><text y="-16" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="12" font-weight="700" fill="#FFD23F">YOU</text></g>`;
+  }
+  $$('.pin', svg).forEach(p => {
+    p.addEventListener('click', () => { stopAuto(); showChap(+p.dataset.i); });
+    p.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stopAuto(); showChap(+p.dataset.i); } });
+  });
+}
+let talkTimers = [];
+function showChap(i) {
+  cur = (i + 8) % 8; seen.add(cur);
+  const cute = style() === 'cute', d = CH[cur], s = cute ? d.c : d.t, el = $('#chap');
+  el.style.setProperty('--c', col(cur));
+  el.innerHTML = `
+    <div class="c-top"><div class="c-no">${String(cur + 1).padStart(2, '0')}</div><div class="c-place"><b>${cute ? s.place + '｜' + s.isl : s.place + '｜' + s.isl}</b>${cute ? '對應教材：' + d.kit : s.role + '・教材：' + d.kit}</div></div>
+    <h3 class="c-title">${cute ? '《' + s.title + '》' : s.title}</h3>
+    <p class="c-scene">${s.scene}</p>
+    <div class="c-img"><img src="img/${cute ? 'cute' : 'tech'}/kit${cur + 1}.webp" alt="${d.kit}" loading="lazy"></div>
+    <div class="talk">${s.talk.map(([w, t]) => `<div class="line"><span class="av">${AV[w] ? `<img src="${AV[w]}" alt="">` : (w === 'n8' ? 'N8' : NM[w].slice(0, 1))}</span><span class="bub"><b>${NM[w]}</b>${t}</span></div>`).join('')}</div>
+    <div class="c-h">${cute ? '🔬 探險任務' : '▸ 必須完成'}</div>
+    <ul class="c-tasks">${s.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
+    <div class="c-h">${cute ? '💡 核心原理' : '▸ 核心原理'}</div>
+    <ul class="c-tasks">${(cute ? d.pc : d.pt).map(t => `<li>${t}</li>`).join('')}</ul>
+    <div class="c-foot">${coreSVG(cur)}<span>${cute ? '完成獎勵：' + CORES[cur].name + '晶核' : (cur === 7 ? '8 / 8 CASES CLOSED' : 'CASE CLOSED ▸ ' + s.place)}</span></div>
+    <div class="c-nav"><button type="button" class="prev">← 上一章</button><button type="button" class="next">下一章 →</button><button type="button" class="play">${autoT ? '⏸ 暫停' : (cute ? '▶ 一路救回 8 座島' : '▶ 依序結案')}</button></div>`;
+  el.classList.remove('swap'); void el.offsetWidth; el.classList.add('swap');
+  talkTimers.forEach(clearTimeout); talkTimers = [];
+  $$('.line', el).forEach((l, k) => talkTimers.push(setTimeout(() => l.classList.add('on'), reduce ? 0 : 350 + k * 700)));
+  $('.prev', el).onclick = () => { stopAuto(); showChap(cur - 1); };
+  $('.next', el).onclick = () => { stopAuto(); showChap(cur + 1); };
+  $('.play', el).onclick = () => autoT ? stopAuto() : startAuto();
+  // 地圖狀態
+  $$('#mapSvg .pin').forEach((p, k) => { p.classList.toggle('cur', k === cur); p.classList.toggle('got', seen.has(k)); });
+  const P = (cute ? POS : TPOS)[cur];
+  $('#walker').setAttribute('transform', `translate(${P[0] + (cute ? 0 : 0)} ${P[1] + (cute ? 0 : -54)})`);
+  const pct = cute ? Math.round(8 + seen.size * 11.5) : Math.round(seen.size / 8 * 100);
+  $('#meterTxt').textContent = cute ? pct + '%' : seen.size + ' / 8';
+  $('#meterBar').style.width = (cute ? pct : Math.max(4, pct)) + '%';
+  paintGems();
+}
+function startAuto() { stopAuto(); autoT = setInterval(() => { showChap(cur + 1); if (seen.size === 8 && cur === 7) stopAuto(); }, 3600); showChap(cur + 1); }
+function stopAuto() { if (autoT) { clearInterval(autoT); autoT = null; const b = $('#chap .play'); if (b) b.textContent = style() === 'cute' ? '▶ 一路救回 8 座島' : '▶ 依序結案'; } }
+
+/* ================== 招募信／識別證 ================== */
+const PAL = { bobo: '波波 BOBO', mili: '米粒 MILI', dondo: '咚咚 DONDO' };
+const PAL_DESC = { bobo: '牠好奇心超強，常常把東西弄壞，但最會問「為什麼」。', mili: '牠喜歡觀察和記錄，總是提醒大家：先不要猜，做實驗看看！', dondo: '牠超愛拆東西、組東西，最會動手改良。' };
+let myNo = store.get('story-no') || String(Math.floor(Math.random() * 900) + 100), pal = store.get('story-pal') || 'bobo';
+store.set('story-no', myNo); // 第一次產生就記住，重新整理不會變
+function renderId() {
+  const name = ($('#myName').value || '').trim();
+  const cute = style() === 'cute';
+  $('#idName').textContent = name || '＿＿＿';
+  $$('[data-name]').forEach(e => e.textContent = name || (cute ? '小探險員' : '＿＿＿'));
+  $('#idNo').textContent = cute ? 'SMI-' + myNo : 'GRID8-J' + myNo;
+  $('#letterNo').textContent = 'GRID8-J' + myNo;
+  $('#idPartner').src = 'img/cute/' + pal + '.webp';
+  $('#idPal').textContent = PAL[pal];
+  $('#letterPal').textContent = PAL[pal].split(' ')[0];
+  $('#letterPalDesc').textContent = PAL_DESC[pal];
+  $$('.partners button').forEach(b => b.setAttribute('aria-pressed', b.dataset.p === pal));
+}
+$('#myName').value = store.get('story-name') || '';
+$('#myName').addEventListener('input', () => { store.set('story-name', $('#myName').value.trim()); renderId(); });
+$$('.partners button').forEach(b => b.addEventListener('click', () => { pal = b.dataset.p; store.set('story-pal', pal); renderId(); }));
+$('#reroll').addEventListener('click', () => { myNo = String(Math.floor(Math.random() * 900) + 100); store.set('story-no', myNo); renderId(); });
+
+/* ================== 角色 ================== */
+function renderCast() {
+  const C = style() === 'cute' ? [
+    ['bobo', '波波', 'BOBO', '主角小怪獸', '好奇心超強，什麼都想碰，但常常把東西弄壞。負責問出孩子心裡的「為什麼？」', '它是不是腳底有膠水？'],
+    ['mili', '米粒', 'MILI', '小小研究員', '喜歡觀察、記錄，總是提醒大家先做實驗。', '先不要猜答案，我們做實驗看看！'],
+    ['dondo', '咚咚', 'DONDO', '工程怪獸', '超愛拆東西、組東西，負責 Build、Test、Improve。', '沒有槳……到底要怎麼前進？'],
+    ['pico', 'PICO', 'NAVIGATOR', '原理導航機器人', '掃描現象、記錄實驗結果，但不直接告訴答案。', '偵測不到任何外部能源。'],
+    ['chaos', '亂亂怪', 'CHAOS', '麻煩製造者', '不是壞人，而是代表錯誤假設、混亂與未知；每次都會製造一個科學問題。', '嘿嘿～猜猜看是哪裡出問題？']
+  ] : [
+    ['i-shield', '林組長', 'FIELD LEAD', 'GRID-8 現場主管', '交付案件、設定限制條件、要求證據，不直接公布答案。語氣簡短、專業。', '我不要猜測，測給我看。'],
+    ['i-chart', '蘇妍', 'DATA ANALYST', '資料分析員', '協助看數據、辨識變因、找規律。她不解題，只會指出資料上的矛盾。', '你一次改了三個條件，那我要怎麼知道是哪一個造成差異？'],
+    ['i-terminal', 'N8', 'TEST SYSTEM', '城市測試系統', '以系統介面提供 STATUS、WARNING、TEST RESULT、NEXT OBJECTIVE。不擬人、不搞笑。', 'NEXT OBJECTIVE ▸ 提交 EVIDENCE。'],
+    ['i-user', '你', 'JUNIOR INVESTIGATOR', '見習技術調查員', '不是旁觀者，而是真正需要完成測試、交付證據與做出工程判斷的人。', '我有證據。']
+  ];
+  $('#castGrid').innerHTML = C.map(c => `<div class="char card" data-reveal><div class="pic">${c[0].startsWith('i-') ? `<svg class="ico"><use href="#${c[0]}"/></svg>` : `<img src="img/cute/${c[0]}.webp" alt="${c[1]}">`}</div><h3>${c[1]}<small>${c[2]}</small></h3><span class="role">${c[3]}</span><p>${c[4]}</p><q>「${c[5]}」</q></div>`).join('');
+  $('#ladder').innerHTML = CH.map((d, i) => `<div class="rung" style="padding-top:${12 + i * 6}px"><b>${i === 7 ? 'FINAL' : '0' + (i + 1)}</b>${d.t.role}</div>`).join('');
+}
+
+/* ================== 謎題卡／證物袋 ================== */
+const CLUE = {
+  c: [['怎麼推都不倒？', '奇怪……我把重量移到左邊後，它好像變得更容易倒了。'], ['滑翔機為什麼一直掉下來？', '咦？重量的位置換了以後，它飛的樣子好像不一樣了。'], ['沒有槳，船怎麼走？', '葉片往後撥水的時候，船好像往前動了一點點……'], ['不碰它，車子怎麼會動？', '把磁鐵翻過來以後，小車跑的方向好像變了！'], ['空中為什麼會有幽靈？', '我換個角度看，影像的位置好像也跟著變了……'], ['車子有電，為什麼不動？', '電池量起來是有電的……那問題會在哪一段呢？'], ['太陽要怎麼抓來開車？', '雲飄過來的時候，車子突然變慢了耶。'], ['沒有電池，要怎麼發電？', '轉得越快，燈好像就越亮……']],
+  t: [['EVIDENCE 01-A', '配重塊 ×2', '⚖️', '移動配重後，裝置的傾斜角度跟著改變。'], ['EVIDENCE 02-A', '機翼調整片', '✈️', '同樣的投擲方式，兩次落點不同。'], ['EVIDENCE 03-A', '明輪葉片 ×3 種', '⚙️', '馬達轉速正常，船速仍未達驗收標準。'], ['EVIDENCE 04-A', '磁鐵與不同材質片', '🧲', '只在特定材質靠近時，車體出現位移。'], ['EVIDENCE 05-A', '鏡片・透明片・手電筒', '🔦', '影像位置會隨觀察角度改變。'], ['EVIDENCE 06-A', '線材組・電池', '🔌', '電池電壓正常，車輪沒有轉動。'], ['EVIDENCE 07-A', '角度規・太陽能板', '☀️', '兩台車規格一致，差異只在設定。'], ['EVIDENCE 08-A', '手搖把・LED', '💡', '轉速變化時，LED 亮度跟著改變。']]
+};
+const opened = new Set();
+function renderDeck() {
+  const cute = style() === 'cute';
+  $('#deck').innerHTML = CH.map((d, i) => {
+    const front = cute
+      ? `<div class="f" style="background:linear-gradient(160deg,${col(i)},#4A2FA0)"><span class="no">QUESTION ${i + 1}</span><span class="q">${CLUE.c[i][0]}</span><img src="img/cute/chaos.webp" alt=""></div>`
+      : `<div class="f"><span class="no">${CLUE.t[i][0]}</span><span class="q">${CLUE.t[i][1]}</span><span class="item">${CLUE.t[i][2]}</span><span class="tape">SEALED · DO NOT OPEN</span></div>`;
+    const back = cute
+      ? `<div class="b"><span class="who"><img src="img/cute/pico.webp" alt="">PICO 的線索</span><p>「${CLUE.c[i][1]}」</p><span class="when">👉 答案在第 ${i + 1} 堂・${d.c.isl}揭曉</span></div>`
+      : `<div class="b"><small>N8 · 初步紀錄</small><p>${CLUE.t[i][3]}</p><span class="who" style="margin-top:12px">▸ 結論：待調查員測試</span><span class="when">CASE 0${i + 1}・${d.t.isl}</span></div>`;
+    return `<button type="button" class="flip ${opened.has(i) ? 'open' : ''}" data-i="${i}" aria-label="翻開第 ${i + 1} 張"><div class="in">${front}${back}</div></button>`;
+  }).join('');
+  $$('#deck .flip').forEach(f => f.addEventListener('click', () => { f.classList.toggle('open'); opened.add(+f.dataset.i); $('#foundN').textContent = opened.size; }));
+  $('#foundN').textContent = opened.size;
+}
+
+/* ================== 認證 ================== */
+function paintGems() {
+  $('#gems').innerHTML = CORES.map((c, i) => `<div class="${seen.has(i) ? 'got' : ''}" style="--c:${col(i)}" title="${c.name}">${coreSVG(i)}</div>`).join('');
+}
+
+/* ================== 結局 ================== */
+const END = {
+  c: [['pico', '八顆晶核全部亮起……Principle Tower Restarting……原理塔重新啟動。'], ['bobo', '所以……我們學會魔法了？'], ['mili', '不是。我們學會的是，比魔法更酷的東西。'], ['mili', '「科學。」']],
+  t: [['n8', 'SYSTEM ▸ 8 / 8 CASES CLOSED。CITY NEXT 系統重新上線。'], ['lin', '……'], ['lin', '你們沒有猜，你們拿出了證據。'], ['lin', '從今天起，你們是 GRID-8 第一級技術調查員。']]
+};
+const NEXT = { c: [['🔊', '聲音島'], ['⚙️', '機械城'], ['💡', '電子谷'], ['🌋', '熱能火山'], ['🌱', '生命森林'], ['🤖', 'AI 未來城'], ['🌌', '太空基地']], t: [['🔊', '聲音'], ['⚙️', '機械'], ['💡', '電子'], ['🔥', '熱能'], ['🧬', '生命科學'], ['🤖', 'AI'], ['🛰️', '太空']] };
+let endI = 0;
+function renderEnding() {
+  const k = style() === 'cute' ? 'c' : 't';
+  $('#sceneTalk').innerHTML = END[k].map(([w, t]) => `<div class="line"><span class="av">${AV[w] ? `<img src="${AV[w]}" alt="">` : (w === 'n8' ? 'N8' : NM[w].slice(0, 1))}</span><span class="bub"><b>${NM[w]}</b>${t}</span></div>`).join('');
+  $$('#sceneTalk .line').forEach((l, i) => l.classList.toggle('on', i < endI));
+  $('#sceneHint').textContent = endI >= END[k].length ? '↺ 再看一次' : '點一下，看下一句 ›';
+  $('#nextMap').innerHTML = NEXT[k].map(([e, n], i) => `<div class="nm"><span class="e">${e}</span>${n}<small>COMING SOON</small></div>`).join('');
+}
+function nextLine() { const n = END[style() === 'cute' ? 'c' : 't'].length; endI = endI >= n ? 0 : endI + 1; renderEnding(); }
+$('#scene').addEventListener('click', nextLine);
+$('#scene').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); nextLine(); } });
+new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting && endI === 0 && !reduce) { o.disconnect(); let k = 0; const iv = setInterval(() => { nextLine(); if (++k >= 4) clearInterval(iv); }, 1100); } }), { threshold: .5 }).observe($('#scene'));
+
+/* ================== 依風格重繪 ================== */
+function renderAll() { renderMap(); showChap(cur); renderId(); renderCast(); renderDeck(); renderEnding(); observe(); }
+renderAll();
+seen.clear(); showChap(0);
+narrow.addEventListener('change', () => { renderMap(); showChap(cur); });
+</script>
+</body>
+</html>
