@@ -40,10 +40,12 @@ function getSheet_() {
   return sh;
 }
 
-// 防止以 = + - @ 開頭的內容被試算表當成公式執行
+// 開頭加 ' 讓試算表一律當文字存：
+// 1. 以 = + - @ 開頭的內容不會被當成公式執行
+// 2. 0 開頭的數字（電話）不會被吃掉開頭的 0
 function safe_(v) {
   const s = String(v == null ? '' : v).slice(0, 200);
-  return /^[=+\-@]/.test(s) ? "'" + s : s;
+  return /^[=+\-@]/.test(s) || /^0\d/.test(s) ? "'" + s : s;
 }
 
 // 統計整期報名：seats＝佔名額的人數，waiting＝還在排候補的人數
