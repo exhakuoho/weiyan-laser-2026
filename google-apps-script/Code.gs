@@ -4,6 +4,9 @@
  */
 
 const SHEET_NAME = '報名資料';
+// 試算表 ID（網址 /d/ 與 /edit 中間那串）。填了就固定寫進這份試算表，不會寫錯檔；
+// 留空字串則寫進「這個 Apps Script 所附屬的試算表」（從試算表的 擴充功能 → Apps Script 建立時）
+const SHEET_ID = '';
 // 早鳥以伺服器時間判斷（不信任訪客電腦的時間）；要改截止日，網站 index.html 的 CONFIG 也要一起改
 const EARLY_BIRD_DEADLINE = new Date('2026-11-30T23:59:59+08:00');
 const PRICE_ORIGINAL = 4800;
@@ -24,7 +27,7 @@ const KEYS = [
 ];
 
 function getSheet_() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
   let sh = ss.getSheetByName(SHEET_NAME);
   if (!sh) sh = ss.insertSheet(SHEET_NAME);
   if (sh.getLastRow() === 0) {
