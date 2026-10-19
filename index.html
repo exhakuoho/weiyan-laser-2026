@@ -592,9 +592,34 @@ form .btn[type=submit]{width:100%;font-size:21px;padding:20px}
 .form-err.on{display:block}
 
 /* 成功視窗 */
-#done{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:20px;background:rgba(3,13,28,.7);backdrop-filter:blur(6px)}
+.payinfo{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;margin:4px 0 16px;border-radius:12px;font-size:15px;line-height:1.6;background:color-mix(in srgb,var(--a1) 10%,transparent);border:1px dashed var(--line)}
+html[data-style="cute"] .payinfo{background:#EAF6FF;border:3px dashed #BFDDF8}
+.payinfo .ico{width:24px;height:24px;color:var(--a1);margin-top:2px}
+.consent + .consent{margin-top:10px}
+#done{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:16px;background:rgba(3,13,28,.7);backdrop-filter:blur(6px)}
 #done.on{display:grid}
-.done-card{width:min(480px,100%);padding:36px 28px;text-align:center;animation:swap .5s cubic-bezier(.3,1.5,.5,1)}
+.done-card{position:relative;width:min(520px,100%);max-height:calc(100svh - 32px);overflow:auto;padding:34px 26px 28px;text-align:center;animation:swap .5s cubic-bezier(.3,1.5,.5,1)}
+.mstep[hidden]{display:none}
+.mclose{position:absolute;right:12px;top:10px;width:40px;height:40px;border:0;background:none;font-size:28px;line-height:1;color:var(--muted);cursor:pointer}
+.qr{display:block;width:100%;max-width:300px;margin:14px auto 10px;border-radius:14px;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.bank{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-size:16px;margin-bottom:14px}
+.bank b{font-family:var(--en);font-size:22px;letter-spacing:.06em;color:var(--hl)}
+.mlabel{display:block;font-weight:900;font-size:17px;margin:14px 0 6px;text-align:left}
+#last5{width:100%;padding:14px;font-size:30px;text-align:center;letter-spacing:.5em;font-family:var(--en);font-weight:700;border-radius:14px;border:2px solid var(--line);background:color-mix(in srgb,var(--bg) 70%,transparent)}
+html[data-style="cute"] #last5{border:3px solid var(--ink);background:#fff}
+#last5:focus{outline:0;border-color:var(--a1);box-shadow:0 0 0 4px color-mix(in srgb,var(--a1) 25%,transparent)}
+.mstep .btn{width:100%;margin-top:14px}
+.mnote{font-size:14px !important;margin-top:12px !important;line-height:1.6}
+.mnote a{color:var(--a1);text-decoration:underline}
+.times{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 4px}
+.times label{cursor:pointer}
+.times input{position:absolute;opacity:0;pointer-events:none}
+.times span{display:block;padding:14px 8px;border-radius:14px;font-weight:900;font-size:17px;border:2px solid var(--line);transition:background .2s,border-color .2s}
+html[data-style="cute"] .times span{border:3px solid var(--ink);background:#fff}
+.times input:checked + span{background:var(--a1);border-color:var(--a1);color:#03111F}
+html[data-style="cute"] .times input:checked + span{background:var(--a3);border-color:var(--ink)}
+.times input:focus-visible + span{outline:3px solid var(--a3);outline-offset:2px}
+.times small{display:block;font-weight:500;font-size:13px;opacity:.75}
 html[data-style="tech"] .done-card{background:var(--solid)}
 .done-card .big-ico{width:120px;height:120px;margin:0 auto 10px}
 .done-card .big-ico svg{width:100%;height:100%;overflow:visible}
@@ -1061,8 +1086,8 @@ footer small{display:block;margin-top:22px;color:var(--muted);font-size:13px}
       <details class="card"><summary>孩子沒有科學基礎可以報名嗎？</summary><div class="ans">可以。每堂課都從一個「怪怪的現象」開始，先觀察、再猜想、動手測試，最後才說出原理名稱，不需要先背任何知識。</div></details>
       <details class="card"><summary>每班幾個人？額滿怎麼辦？</summary><div class="ans">每班上限 12 人。依報名順序保留名額，額滿後的報名會列入候補，有名額時我們會依序電話通知。</div></details>
       <details class="card eb-only"><summary>早鳥優惠怎麼算？</summary><div class="ans" id="faqEarly">早鳥期間完成報名，8 堂只要 NT$4,200（原價 NT$4,800）。</div></details>
-      <details class="card"><summary>怎麼付款？</summary><div class="ans">可選擇銀行轉帳或現場付款。送出報名後我們會以電話聯繫，確認名額與付款細節。</div></details>
-      <details class="card"><summary>可以先試聽嗎？</summary><div class="ans">可以在下方報名表選「試聽一堂」，我們會以電話聯繫安排試聽時間與費用。</div></details>
+      <details class="card"><summary>怎麼付款？</summary><div class="ans">採銀行轉帳（不提供現場繳費）。送出報名後畫面會顯示轉帳 QR Code 與帳號，轉帳後填寫帳號末 5 碼，系統會寄「報名成功」確認信到您的 Email。若已額滿會列入候補，候補期間請先不要轉帳。</div></details>
+      <details class="card"><summary>可以先試聽嗎？</summary><div class="ans">可以。在下方報名表選「試聽一堂」，送出後選擇方便聯繫的時段（平日／假日、上午／下午），我們會在那個時段以電話聯繫安排試聽，並寄預約成功信到您的 Email。</div></details>
       <details class="card"><summary>上課地點在哪裡？</summary><div class="ans">在高科大附近的強納森美語教室。完整地址會在電話確認時告知，也會公告在本頁。</div></details>
     </div>
   </div>
@@ -1079,8 +1104,8 @@ footer small{display:block;margin-top:22px;color:var(--muted);font-size:13px}
     <div class="reg">
       <div class="steps" data-reveal>
         <div class="step card" style="--c:#BFE6FF"><span class="n">1</span><span><b>填寫報名表</b><small>約 1 分鐘</small></span></div>
-        <div class="step card" style="--c:#FFF1C9"><span class="n">2</span><span><b>電話確認</b><small>確認名額與上課細節</small></span></div>
-        <div class="step card" style="--c:#FFE3EE"><span class="n">3</span><span><b>完成付款</b><small>銀行轉帳或現場付款</small></span></div>
+        <div class="step card" style="--c:#FFF1C9"><span class="n">2</span><span><b>轉帳＋回填末 5 碼</b><small>送出後會顯示轉帳 QR Code（試聽則選聯繫時間）</small></span></div>
+        <div class="step card" style="--c:#FFE3EE"><span class="n">3</span><span><b>收到確認信</b><small>Email 寄送報名成功通知</small></span></div>
         <div class="step card" style="--c:#DDF8EE"><span class="n">4</span><span><b>開始上課</b><small>每週三 13:30–15:00</small></span></div>
       </div>
       <form id="regForm" class="card" novalidate data-reveal>
@@ -1109,12 +1134,9 @@ footer small{display:block;margin-top:22px;color:var(--muted);font-size:13px}
           <div class="field"><label for="emergencyName">緊急聯絡人<em>*</em></label><input type="text" id="emergencyName" name="emergencyName" maxlength="30" placeholder="姓名／關係" required><div class="msg">請填寫緊急聯絡人</div></div>
           <div class="field"><label for="emergencyPhone">緊急聯絡電話<em>*</em></label><input type="tel" id="emergencyPhone" name="emergencyPhone" maxlength="20" placeholder="0912345678" required><div class="msg">請填寫正確的電話號碼</div></div>
         </div>
+        <div class="field"><label for="parentEmail">家長 Email<em>*</em></label><input type="email" id="parentEmail" name="parentEmail" maxlength="80" autocomplete="email" inputmode="email" placeholder="報名成功通知會寄到這裡" required><div class="msg">請填寫正確的 Email</div></div>
 
-        <div class="field" id="paymentField"><label>付款方式<em>*</em></label>
-          <div class="pills">
-            <label><input type="radio" name="payment" value="銀行轉帳"><span><svg class="ico"><use href="#i-bank"/></svg>銀行轉帳</span></label>
-            <label><input type="radio" name="payment" value="現場付款"><span><svg class="ico"><use href="#i-cash"/></svg>現場付款</span></label>
-          </div><div class="msg">請選擇付款方式</div></div>
+        <div class="payinfo" id="payInfo"><svg class="ico"><use href="#i-bank"/></svg><span><b>付款方式：銀行轉帳</b><br>送出報名後會顯示轉帳 QR Code 與帳號，轉帳後填寫帳號末 5 碼，就完成報名。</span></div>
 
         <div class="grid2">
           <div class="field"><label for="source">從哪裡知道這堂課<span class="opt">選填</span></label>
@@ -1126,6 +1148,8 @@ footer small{display:block;margin-top:22px;color:var(--muted);font-size:13px}
 
         <label class="consent" id="consentBox"><input type="checkbox" id="consent" name="consent">
           <span>我同意微研 Weiyan 科學教育蒐集上述資料，僅用於本課程報名、上課聯繫與緊急聯絡，不會提供給第三方或作其他用途。</span></label>
+        <label class="consent"><input type="checkbox" id="photoOptOut" name="photoOptOut">
+          <span>我不同意孩子照片提供於公開場合<span class="opt">（選填）</span></span></label>
 
         <div class="hp" aria-hidden="true"><label>請勿填寫<input type="text" name="hp_x7" tabindex="-1" autocomplete="off"></label></div>
 
@@ -1137,14 +1161,49 @@ footer small{display:block;margin-top:22px;color:var(--muted);font-size:13px}
   </div>
 </section>
 
-<div id="done" role="dialog" aria-modal="true" aria-labelledby="doneTitle">
+<div id="done" role="dialog" aria-modal="true" aria-label="報名後續步驟">
   <div class="done-card card">
-    <div class="big-ico"><img class="only-c" src="img/cute/bobo.webp" alt="" style="width:100%;height:100%;object-fit:contain"><svg class="only-t ico" viewBox="0 0 24 24" style="color:var(--a1)"><use href="#i-shield"/></svg></div>
-    <h3 id="doneTitle"><span class="only-t">報到成功！</span><span class="only-c">報名成功！</span></h3>
-    <p id="doneMsg">我們已收到報名資料，將盡快以電話與您聯繫確認。</p>
-    <div class="ref" id="doneRef">SCI-000000</div>
-    <p style="font-size:15px">請截圖保存報名編號，聯繫時提供即可。</p>
-    <button class="btn" id="doneClose" type="button" style="margin-top:14px">好的</button>
+    <button class="mclose" type="button" data-close aria-label="關閉">×</button>
+
+    <div class="mstep" id="m-pay" hidden>
+      <h3>報名資料已送出！</h3>
+      <p>還差最後一步：請轉帳 <b class="hl" id="payAmt">NT$4,200</b>，<br>轉帳後填寫帳號末 5 碼，就完成報名。</p>
+      <img class="qr" src="img/pay-qr.png" alt="中國信託轉帳 QR Code，帳號 901890457506">
+      <div class="bank"><span>中國信託（822）營業部<br><b>901890457506</b></span><button class="tg" id="copyAcc" type="button">複製帳號</button></div>
+      <label class="mlabel" for="last5">轉帳帳號末 5 碼</label>
+      <input id="last5" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="12345" aria-describedby="payErr">
+      <button class="btn" id="paySend" type="button"><svg class="ico"><use href="#i-check"/></svg><span>送出，完成報名</span></button>
+      <div class="form-err" id="payErr" role="alert"></div>
+      <p class="mnote">報名編號 <b id="payRef"></b>。若現在不方便轉帳，可以先關閉，之後透過 <a href="https://lin.ee/rZW93KN" target="_blank" rel="noopener">官方 LINE</a> 告知末 5 碼。</p>
+    </div>
+
+    <div class="mstep" id="m-trial" hidden>
+      <h3>試聽預約已送出！</h3>
+      <p>請選擇方便我們電話聯繫的時間（可複選）：</p>
+      <div class="times" role="group" aria-label="方便聯繫的時間">
+        <label><input type="checkbox" name="ctime" value="平日上午"><span>平日上午<small>週一～五</small></span></label>
+        <label><input type="checkbox" name="ctime" value="平日下午"><span>平日下午<small>週一～五</small></span></label>
+        <label><input type="checkbox" name="ctime" value="假日上午"><span>假日上午<small>週六、日</small></span></label>
+        <label><input type="checkbox" name="ctime" value="假日下午"><span>假日下午<small>週六、日</small></span></label>
+      </div>
+      <button class="btn" id="trialSend" type="button"><svg class="ico"><use href="#i-check"/></svg><span>送出，完成預約</span></button>
+      <div class="form-err" id="trialErr" role="alert"></div>
+    </div>
+
+    <div class="mstep" id="m-wait" hidden>
+      <h3>已列入候補</h3>
+      <p id="waitMsg"></p>
+      <button class="btn" type="button" data-close>好的</button>
+    </div>
+
+    <div class="mstep" id="m-final" hidden>
+      <div class="big-ico"><img class="only-c" src="img/cute/bobo.webp" alt="" style="width:100%;height:100%;object-fit:contain"><svg class="only-t ico" viewBox="0 0 24 24" style="color:var(--a1)"><use href="#i-shield"/></svg></div>
+      <h3 id="finalTitle">報名成功！</h3>
+      <p id="finalMsg"></p>
+      <div class="ref" id="doneRef">SCI-000000</div>
+      <p style="font-size:15px">請截圖保存報名編號，聯繫時提供即可。</p>
+      <button class="btn" type="button" data-close>好的</button>
+    </div>
   </div>
 </div>
 <canvas id="confetti"></canvas>
@@ -1641,24 +1700,25 @@ function tickCountdown() {
 }
 
 /* ================== 報名表 ================== */
-const form = $('#regForm'), payField = $('#paymentField');
-const required = ['studentName', 'grade', 'school', 'parentName', 'parentPhone', 'emergencyName', 'emergencyPhone'];
+const form = $('#regForm'), payInfo = $('#payInfo');
+const required = ['studentName', 'grade', 'school', 'parentName', 'parentPhone', 'parentEmail', 'emergencyName', 'emergencyPhone'];
+const halfWidth = v => v.replace(/[０-９]/g, d => String.fromCharCode(d.charCodeAt(0) - 0xFEE0));
 // 全形數字轉半形、去掉空白／橫線／括號，例如 (07)381-4526、０９１２…
-const normPhone = v => v.replace(/[０-９]/g, d => String.fromCharCode(d.charCodeAt(0) - 0xFEE0)).replace(/[\s\-()（）]/g, '');
+const normPhone = v => halfWidth(v).replace(/[\s\-()（）]/g, '');
 const phoneOK = v => /^0\d{8,9}$/.test(normPhone(v));
+const emailOK = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 const currentType = () => form.type.value;
 function updateSummary() {
   const trial = currentType() === '試聽一堂';
-  payField.hidden = trial;
+  payInfo.hidden = trial;
   const early = isEarly(), price = early ? CONFIG.PRICE_EARLY : CONFIG.PRICE_ORIGINAL;
   $('#sumAmt').textContent = trial ? '專人聯繫' : 'NT$' + fmt(price);
-  $('#sumNote').textContent = trial ? '試聽時間與費用將以電話確認' : (early ? `早鳥價（${deadlineTxt} 前）` : '原價');
+  $('#sumNote').textContent = trial ? '送出後選擇方便聯繫的時間' : (early ? `早鳥價（${deadlineTxt} 前）` : '原價');
+  $('span', $('#submitBtn')).textContent = trial ? '送出試聽預約' : '送出報名';
   updateProgress();
 }
 function updateProgress() {
-  const trial = currentType() === '試聽一堂';
   const checks = [...required.map(n => form[n].value.trim() !== ''), form.consent.checked];
-  if (!trial) checks.push(!!form.payment.value);
   $('#fprog').style.width = (checks.filter(Boolean).length / checks.length * 100) + '%';
 }
 form.addEventListener('input', e => { const f = e.target.closest('.field'); if (f) f.classList.remove('err'); if (e.target.id === 'consent') $('#consentBox').classList.remove('err'); updateProgress(); });
@@ -1666,8 +1726,10 @@ form.addEventListener('change', e => { if (e.target.name === 'type') updateSumma
 function validate() {
   let ok = true, first = null;
   const mark = (el, bad) => { el.classList.remove('err'); if (bad) { void el.offsetWidth; el.classList.add('err'); ok = false; first = first || el; } };
-  required.forEach(n => { const v = form[n].value.trim(); mark(form[n].closest('.field'), !v || (/Phone$/.test(n) && !phoneOK(v))); });
-  if (currentType() !== '試聽一堂') mark(payField, !form.payment.value);
+  required.forEach(n => {
+    const v = form[n].value.trim();
+    mark(form[n].closest('.field'), !v || (/Phone$/.test(n) && !phoneOK(v)) || (n === 'parentEmail' && !emailOK(v)));
+  });
   mark($('#consentBox'), !form.consent.checked);
   if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
   return ok;
@@ -1676,49 +1738,103 @@ function makeRef() {
   const d = new Date(), p = n => String(n).padStart(2, '0');
   return `SCI-${String(d.getFullYear()).slice(2)}${p(d.getMonth() + 1)}${p(d.getDate())}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
 }
+// 送資料給 Apps Script 並讀回結果（Apps Script 的回應有 CORS 標頭，可以讀到 JSON）
+async function api(obj) {
+  const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), 45000);
+  try {
+    const r = await fetch(CONFIG.SHEET_WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(obj), signal: ctrl.signal });
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || '系統忙碌中，請稍後再試');
+    return j;
+  } catch (ex) {
+    if (ex.name === 'AbortError') throw new Error('連線逾時，請檢查網路後再試一次');
+    if (ex instanceof TypeError) throw new Error('網路連線失敗，資料尚未送出，請檢查網路後再試一次');
+    throw ex;
+  } finally { clearTimeout(t); }
+}
+async function busy(btn, label, fn) {
+  const span = $('span', btn), old = span.textContent;
+  btn.disabled = true; span.textContent = label;
+  try { return await fn(); } finally { btn.disabled = false; span.textContent = old; }
+}
+const showErr = (el, msg) => { el.textContent = '⚠️ ' + msg; el.classList.add('on'); };
+let ctx = null; // 目前這筆報名（報名編號、Email、金額…）
+
 form.addEventListener('submit', async e => {
   e.preventDefault();
   const err = $('#formErr'); err.classList.remove('on');
   if (form.hp_x7.value) return; // 機器人（隱藏欄位被填）
   if (!validate()) return;
-  if (!CONFIG.SHEET_WEBHOOK_URL) {
-    err.textContent = '⚠️ 報名系統尚未完成設定（尚未填入 Google 試算表網址），請稍後再試或直接聯繫我們。'; err.classList.add('on');
-    console.warn('請在 CONFIG.SHEET_WEBHOOK_URL 填入 Apps Script 部署網址');
-    return;
-  }
+  if (!CONFIG.SHEET_WEBHOOK_URL) { showErr(err, '報名系統尚未完成設定，請稍後再試或直接聯繫我們。'); return; }
   const trial = currentType() === '試聽一堂', early = isEarly();
   const data = {
     refCode: makeRef(), course: CONFIG.COURSE, type: currentType(),
     studentName: form.studentName.value.trim(), grade: form.grade.value, school: form.school.value.trim(),
     parentName: form.parentName.value.trim(), parentPhone: normPhone(form.parentPhone.value),
+    parentEmail: form.parentEmail.value.trim(),
     emergencyName: form.emergencyName.value.trim(), emergencyPhone: normPhone(form.emergencyPhone.value),
-    payment: trial ? '' : form.payment.value,
+    payment: trial ? '' : '銀行轉帳',
     amount: trial ? '試聽（專人聯繫）' : String(early ? CONFIG.PRICE_EARLY : CONFIG.PRICE_ORIGINAL),
     earlyBird: trial ? '' : (early ? '是' : '否'),
     source: form.source.value, note: form.note.value.trim(),
+    photoOptOut: form.photoOptOut.checked ? '是' : '',
     pageStyle: style() === 'cute' ? '可愛風' : '科技風',
     consent: '同意', submittedAt: new Date().toISOString()
   };
-  const btn = $('#submitBtn'), lbl = $('span', btn); btn.disabled = true; lbl.textContent = '傳送中…';
   try {
-    // Apps Script 不回傳 CORS 標頭，用 no-cors 送出（text/plain 為簡單請求，不會觸發預檢）
-    await fetch(CONFIG.SHEET_WEBHOOK_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
-    showDone(data);
+    const res = await busy($('#submitBtn'), '傳送中…', () => api(data));
+    ctx = { ...data, ...res };
     form.reset(); updateSummary();
-  } catch (ex) {
-    err.textContent = '⚠️ 網路連線失敗，資料尚未送出，請檢查網路後再按一次。'; err.classList.add('on');
-  } finally { btn.disabled = false; lbl.textContent = '送出報名'; }
+    openStep(res.waitlist ? 'wait' : (trial ? 'trial' : 'pay'));
+  } catch (ex) { showErr(err, ex.message); }
 });
-function showDone(d) {
-  $('#doneRef').textContent = d.refCode;
-  $('#doneMsg').textContent = d.type === '試聽一堂'
-    ? `已收到 ${d.studentName} 的試聽報名！我們會以電話聯繫 ${d.parentName} 安排試聽時間。`
-    : `已收到 ${d.studentName} 的報名！付款方式：${d.payment}。每班限 ${CONFIG.CAPACITY} 人，我們會以電話確認名額與應繳金額（以收到報名的時間判斷是否適用早鳥價）；若已額滿會通知候補順位。`;
-  $('#done').classList.add('on'); $('#doneClose').focus(); confetti();
+
+function openStep(name) {
+  $$('#done .mstep').forEach(el => el.hidden = el.id !== 'm-' + name);
+  $$('#done .form-err').forEach(el => el.classList.remove('on'));
+  if (name === 'pay') {
+    $('#payAmt').textContent = 'NT$' + fmt(+ctx.amount) + (ctx.earlyBird === '是' ? '（早鳥價）' : '');
+    $('#payRef').textContent = ctx.refCode; $('#last5').value = '';
+  }
+  if (name === 'trial') $$('#done input[name=ctime]').forEach(c => c.checked = false);
+  if (name === 'wait') $('#waitMsg').textContent = `本期名額已滿，${ctx.studentName} 目前為候補第 ${ctx.waitPos} 位。請先不要轉帳，名額釋出時我們會依序以電話通知。候補登記通知已寄到 ${ctx.parentEmail}。`;
+  $('#done').classList.add('on');
+  const focus = { pay: '#last5', trial: '#done input[name=ctime]', wait: '#m-wait .btn', final: '#m-final .btn' }[name];
+  setTimeout(() => $(focus) && $(focus).focus(), 50);
 }
+function showFinal(kind, email) {
+  $('#finalTitle').textContent = kind === 'trial' ? '預約成功！' : '報名成功！';
+  $('#finalMsg').textContent = (kind === 'trial'
+    ? `已收到 ${ctx.studentName} 的試聽預約，我們會在您方便的時段以電話聯繫。`
+    : `已收到 ${ctx.studentName} 的報名與轉帳資訊，核對款項後會再通知上課細節。`)
+    + `確認信已寄到 ${email || ctx.parentEmail}（沒看到請檢查垃圾郵件）。期待相見～`;
+  $('#doneRef').textContent = ctx.refCode;
+  openStep('final'); confetti();
+}
+$('#last5').addEventListener('input', e => { e.target.value = halfWidth(e.target.value).replace(/\D/g, '').slice(0, 5); $('#payErr').classList.remove('on'); });
+$('#last5').addEventListener('keydown', e => { if (e.key === 'Enter') $('#paySend').click(); });
+$('#paySend').addEventListener('click', async () => {
+  const last5 = $('#last5').value;
+  if (!/^\d{5}$/.test(last5)) { showErr($('#payErr'), '請填寫 5 位數字'); $('#last5').focus(); return; }
+  try {
+    const res = await busy($('#paySend'), '傳送中…', () => api({ action: 'payment', refCode: ctx.refCode, last5 }));
+    showFinal('paid', res.email);
+  } catch (ex) { showErr($('#payErr'), ex.message); }
+});
+$('#trialSend').addEventListener('click', async () => {
+  const contactTimes = $$('#done input[name=ctime]:checked').map(c => c.value);
+  if (!contactTimes.length) { showErr($('#trialErr'), '請至少選一個時段'); return; }
+  try {
+    const res = await busy($('#trialSend'), '傳送中…', () => api({ action: 'trial', refCode: ctx.refCode, contactTimes }));
+    showFinal('trial', res.email);
+  } catch (ex) { showErr($('#trialErr'), ex.message); }
+});
+$('#copyAcc').addEventListener('click', async e => {
+  try { await navigator.clipboard.writeText('901890457506'); e.currentTarget.textContent = '已複製 ✓'; }
+  catch (_) { e.currentTarget.textContent = '請手動複製'; }
+});
 function closeDone() { $('#done').classList.remove('on'); }
-$('#doneClose').addEventListener('click', closeDone);
-$('#done').addEventListener('click', e => { if (e.target.id === 'done') closeDone(); });
+$$('#done [data-close]').forEach(b => b.addEventListener('click', closeDone));
 addEventListener('keydown', e => { if (e.key === 'Escape') { closeDone(); nav.classList.remove('open'); } });
 
 /* ================== 彩帶 ================== */
