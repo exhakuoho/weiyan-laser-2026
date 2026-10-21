@@ -632,10 +632,9 @@ html[data-style="tech"] .done-card{background:var(--solid)}
 footer{position:relative;z-index:2;padding:56px 0 110px;border-top:1px solid var(--line)}
 html[data-style="cute"] footer{border-top:0;background:#084DAA;color:#fff}
 html[data-style="cute"] footer .r,html[data-style="cute"] footer small{color:#CFE4FF}
-html[data-style="cute"] .foot img{filter:brightness(0) invert(1)}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.foot img{height:64px;width:auto}
-html[data-style="tech"] .foot img{filter:brightness(0) invert(1)}
+.foot-logo{display:block;background:#fff;border-radius:16px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.foot-logo img{height:88px;width:auto;display:block}
 .foot .r{text-align:right;color:var(--muted);font-size:16px}
 footer small{display:block;margin-top:22px;color:var(--muted);font-size:13px}
 
@@ -1210,7 +1209,7 @@ footer small{display:block;margin-top:22px;color:var(--muted);font-size:13px}
 
 <footer>
   <div class="wrap foot">
-    <a href="#top"><img src="img/weiyan-logo-480.webp" alt="微研 WEIYAN 科學教育"></a>
+    <a href="#top" class="foot-logo"><img src="img/weiyan-logo-full.webp" alt="微研 WEIYAN 科學教育・探索未來"></a>
     <div class="r">8 大科學原理常態班<br>每週三 13:30–15:00・一期 8 堂・每班限 12 人<br>高科大附近・強納森美語教室</div>
   </div>
   <div class="wrap"><small>課程圖片為教材示意。© 2026 微研 Weiyan 科學教育</small></div>

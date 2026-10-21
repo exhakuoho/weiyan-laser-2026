@@ -374,7 +374,16 @@ html[data-style="cute"] .nm{background:rgba(255,255,255,.7);border:3px dashed #B
 footer{position:relative;z-index:2;padding:48px 0 60px;border-top:1px solid var(--line)}
 html[data-style="cute"] footer{background:#084DAA;color:#fff;border:0}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.foot img{height:58px;width:auto;filter:brightness(0) invert(1)}
+.foot-logo{display:block;background:#fff;border-radius:16px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.foot-logo img{height:88px;width:auto;display:block}
+.home{padding:0 0 clamp(60px,8vw,100px)}
+.home-card{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:26px 30px;color:inherit;transition:transform .3s}
+.home-card:hover{transform:translateY(-4px)}
+.hc-logo{height:120px;width:auto;background:#fff;border-radius:18px;padding:10px 12px;box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.hc-txt b{display:block;font-size:clamp(24px,3vw,34px);line-height:1.3;margin:2px 0 6px}
+html[data-style="cute"] .hc-txt b{font-weight:400}
+.hc-txt .d{display:block;color:var(--muted);font-size:17px}
+.hc-txt .kicker{margin-bottom:6px}
 html[data-style="cute"] .foot .r{color:#CFE4FF}
 .foot .r{text-align:right;color:var(--muted);font-size:15px}
 
@@ -405,6 +414,7 @@ html[data-style="cute"] .foot .r{color:#CFE4FF}
   .flip{aspect-ratio:4/3}
   .callout .vs{grid-template-columns:1fr}
   .foot .r{text-align:left}
+  .home-card{grid-template-columns:1fr;text-align:center;justify-items:center;gap:16px;padding:24px 20px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
@@ -686,9 +696,19 @@ html[data-style="cute"] .foot .r{color:#CFE4FF}
   </div>
 </section>
 
+<section class="home" aria-label="微研官方網站">
+  <div class="wrap" data-reveal>
+    <a class="home-card card" href="https://weiyan.designjarvis.com/" target="_blank" rel="noopener">
+      <img class="hc-logo" src="img/weiyan-logo-full.webp" alt="微研 WEIYAN 科學教育・探索未來">
+      <span class="hc-txt"><span class="kicker">WEIYAN OFFICIAL SITE</span><b>回到微研官方網站</b><span class="d">更多常態課程、營隊與活動照片，都在這裡。</span></span>
+      <span class="btn">前往官網 →</span>
+    </a>
+  </div>
+</section>
+
 <footer>
   <div class="wrap foot">
-    <a href="index.html"><img src="img/weiyan-logo-480.webp" alt="微研 WEIYAN 科學教育"></a>
+    <a href="index.html" class="foot-logo"><img src="img/weiyan-logo-full.webp" alt="微研 WEIYAN 科學教育・探索未來"></a>
     <div class="r">《小怪獸科學群島》／《GRID-8 城市科學案件簿》<br>© 2026 微研 Weiyan 科學教育</div>
   </div>
 </footer>
